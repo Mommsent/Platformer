@@ -15,19 +15,23 @@ public class PlayerMovement : MonoBehaviour
     {
         get
         {
-            if(IsMoving && !touchingDirections.IsOnWall)
+            if(CanMove)
             {
-                if(touchingDirections.IsGrounded) 
+                if (IsMoving && !touchingDirections.IsOnWall)
                 {
-                    if (IsRunning)
-                        return runSpeed;
+                    if (touchingDirections.IsGrounded)
+                    {
+                        if (IsRunning)
+                            return runSpeed;
 
-                    return walkSpeed;
+                        return walkSpeed;
+                    }
+                    else
+                    {
+                        return airMoveSpeed;
+                    }
                 }
-                else
-                {
-                    return airMoveSpeed;
-                }
+                return 0;
             }
             return 0;
         }
@@ -39,6 +43,13 @@ public class PlayerMovement : MonoBehaviour
     private bool _isRunning = false;
     [SerializeField] Animator animator;
     TouchingDirection touchingDirections;
+    public bool CanMove
+    {
+        get 
+        {
+            return animator.GetBool("CanMove");
+        }
+    }
 
     private void Awake()
     {
@@ -128,10 +139,18 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         //TODO check if alive as well
-        if(context.started && touchingDirections.IsGrounded)
+        if(context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetTrigger("Attack");
         }
     }
 }

@@ -189,7 +189,19 @@ MonoBehaviour:
     m_ActionId: 287a41dc-11f5-4bb3-92f7-6af63deb391d
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5900280070653129505}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8bd412fa-d54a-4f40-9f20-1794c906196a
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -248,6 +260,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4340da6e-2bbc-43b4-bdfb-61abea6508b2
     m_ActionName: Player/Run[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5900280070653129505}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5d920baf-b32a-4430-ba68-66f5d63b3b3d
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -294,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 9
+  airMoveSpeed: 3
   animator: {fileID: 134921898555533555}
   _isFacingRight: 1
 --- !u!70 &1249858785337937242
@@ -343,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36056ee0f6bfc7f459f81b5dc55738f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactFilter:
+  castFilter:
     useTriggers: 0
     useLayerMask: 0
     useDepth: 0
@@ -358,5 +387,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.05
+  wallDistance: 0.2
+  ceilingDistance: 0.05
   _isGrounded: 1
   animator: {fileID: 134921898555533555}
