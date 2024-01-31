@@ -1,15 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(Damageable))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 9f;
     [SerializeField] private float airMoveSpeed = 3f;
+    Damageable damagable;
 
     public float CurrentMoveSpeed
     {
@@ -41,8 +41,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     private bool _isMoving = false;
     private bool _isRunning = false;
-    [SerializeField] Animator animator;
+    private Animator animator;
     TouchingDirection touchingDirections;
+
     public bool CanMove
     {
         get 
@@ -51,10 +52,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public bool IsAlive
     {
-        rb = GetComponent<Rigidbody2D>();
-        touchingDirections = GetComponent<TouchingDirection>();
+        get
+        {
+            return animator.GetBool("IsAlive");
+        }
     }
 
     public bool IsMoving { get 
@@ -99,17 +102,38 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        touchingDirections = GetComponent<TouchingDirection>();
+        animator = GetComponent<Animator>();
+        damagable = GetComponent<Damageable>();
+    }
+
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        if(!damagable.LockVelocity)
+        {
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        }
+        
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        IsMoving = moveInput != Vector2.zero;
-        SetFacingDerection(moveInput);
+        if(IsAlive && !damagable.LockVelocity)
+        {
+            IsMoving = moveInput != Vector2.zero;
+            SetFacingDerection(moveInput);
+        }
+        else
+        {
+            IsMoving = false;
+        }
     }
 
     private void SetFacingDerection(Vector2 moveInput)
@@ -152,5 +176,11 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        damagable.LockVelocity = true;
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 }
