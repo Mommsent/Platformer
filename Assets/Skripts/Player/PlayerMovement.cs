@@ -178,6 +178,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnRangedAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger("RangedAttack");
+        }
+    }
+
     public void OnHit(int damage, Vector2 knockback)
     {
         damagable.LockVelocity = true;

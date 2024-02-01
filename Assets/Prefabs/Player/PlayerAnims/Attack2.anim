@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack1
+  m_Name: Attack2
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2
+        time: 0.3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -40,7 +40,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.6
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttack1
+    path: SwordAttack2
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -60,15 +60,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: a089e0f86e2e09c4391f765a9b34f676, type: 3}
+      value: {fileID: 21300000, guid: 2568aaf443e15f9449ef04b2f75d88e4, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: c736bf27562e03c45ab9b2954bd53963, type: 3}
+      value: {fileID: 21300000, guid: ee2b5954ed3183e4db7f4a9b1c0d1a06, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: db82965e7503fe94cb152d08679b4f62, type: 3}
+      value: {fileID: 21300000, guid: 4f0db1759a87b6f41a16d968035491fe, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: 48e159b4642fe6443b541ef952be53a0, type: 3}
+      value: {fileID: 21300000, guid: 2d4852e42167e8e4d8136218e352dd86, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 91d72743432f36c41920c33c8e95f2ec, type: 3}
+      value: {fileID: 21300000, guid: 8a02d26913802b84db53ef76a59a7352, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: baad037fe49ae254cab3688b97b0f5cb, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -82,7 +84,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 762327888
+      path: 3027854058
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -100,17 +102,18 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: a089e0f86e2e09c4391f765a9b34f676, type: 3}
-    - {fileID: 21300000, guid: c736bf27562e03c45ab9b2954bd53963, type: 3}
-    - {fileID: 21300000, guid: db82965e7503fe94cb152d08679b4f62, type: 3}
-    - {fileID: 21300000, guid: 48e159b4642fe6443b541ef952be53a0, type: 3}
-    - {fileID: 21300000, guid: 91d72743432f36c41920c33c8e95f2ec, type: 3}
+    - {fileID: 21300000, guid: 2568aaf443e15f9449ef04b2f75d88e4, type: 3}
+    - {fileID: 21300000, guid: ee2b5954ed3183e4db7f4a9b1c0d1a06, type: 3}
+    - {fileID: 21300000, guid: 4f0db1759a87b6f41a16d968035491fe, type: 3}
+    - {fileID: 21300000, guid: 2d4852e42167e8e4d8136218e352dd86, type: 3}
+    - {fileID: 21300000, guid: 8a02d26913802b84db53ef76a59a7352, type: 3}
+    - {fileID: 21300000, guid: baad037fe49ae254cab3688b97b0f5cb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -140,7 +143,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.2
+        time: 0.3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -149,7 +152,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.6
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -161,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttack1
+    path: SwordAttack2
     classID: 61
     script: {fileID: 0}
     flags: 0

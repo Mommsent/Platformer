@@ -6,7 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(Damageable))]
 public class Knight : MonoBehaviour
 {
-    public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3f;
+    public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
 
@@ -43,9 +45,10 @@ public class Knight : MonoBehaviour
         }
     }
 
-    private bool _hasTarget = false;
     private float walkStopeRate = 0.005f;
-
+    
+    private bool _hasTarget = false;
+    
     public bool HasTarget 
     {
         get { return _hasTarget; }  
@@ -110,7 +113,9 @@ public class Knight : MonoBehaviour
         {
             if (CanMove)
             {
-                rb.velocity = new Vector2(walkSpeed * walkableDirectionVector.x, rb.velocity.y);
+                float xVelocity = Mathf.Clamp(
+                    rb.velocity.x + (walkAcceleration * walkableDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed);
+                rb.velocity = new Vector2(xVelocity, rb.velocity.y);
             }
             else
             {

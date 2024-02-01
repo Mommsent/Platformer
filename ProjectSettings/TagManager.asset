@@ -17,7 +17,7 @@ TagManager:
   - PlayerHitBox
   - EnemyHitBox
   - GroundDetection
-  - 
+  - PickUps
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 1359385457
+    locked: 0
+  - name: PickUps
+    uniqueID: 1076656041
     locked: 0
   - name: Player
     uniqueID: 1354455971

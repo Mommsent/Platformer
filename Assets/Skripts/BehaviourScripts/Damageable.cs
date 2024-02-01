@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
+    public UnityEvent Died;
+
     [SerializeField] private int _maxHealth = 100;
     Animator _animator;
     public int MaxHealth
@@ -33,6 +35,7 @@ public class Damageable : MonoBehaviour
             if(_health <= 0) 
             {
                 IsAlive = false;
+                Died.Invoke();
             }
         }
     }
@@ -53,7 +56,6 @@ public class Damageable : MonoBehaviour
         {
             _isAlive = value;
             _animator.SetBool("IsAlive", value);
-            Debug.Log("Is alive set " + value);
         }
     }
 
@@ -105,6 +107,19 @@ public class Damageable : MonoBehaviour
             damageableHit?.Invoke(damage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);
 
+            return true;
+        }
+        return false;
+    }
+
+    public bool Heal(int healthRestore)
+    {
+        if(IsAlive && Health < MaxHealth)
+        {
+            int maxHeal = Mathf.Max(MaxHealth - Health, 0);
+            int actualHeal = Mathf.Min(maxHeal, healthRestore);
+            Health += actualHeal;
+            CharacterEvents.characterHealed.Invoke(gameObject, actualHeal);
             return true;
         }
         return false;
