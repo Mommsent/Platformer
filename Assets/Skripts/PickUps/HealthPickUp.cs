@@ -5,11 +5,13 @@ using UnityEngine;
 public class HealthPickUp : MonoBehaviour
 {
     public int healtRestore = 10;
-    public Vector3 spinRotationSpeed = new Vector3(0, 180, 0); 
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 spinRotationSpeed = new Vector3(0, 180, 0);
+
+    private AudioSource pickupSource;
+    
+    private void Awake()
     {
-        
+        pickupSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +22,8 @@ public class HealthPickUp : MonoBehaviour
             bool wasHealed = damageable.Heal(healtRestore);
             if(wasHealed)
             {
+                if (pickupSource != null)
+                    AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
                 Destroy(gameObject);
             }
         }
