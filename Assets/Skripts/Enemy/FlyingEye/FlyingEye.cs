@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FlyingEye : MonoBehaviour
@@ -18,7 +15,7 @@ public class FlyingEye : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rb;
-    private Damageable damageable;
+    private FlyingEyeHealth health;
 
     private bool _hasTarget = false;
     
@@ -43,8 +40,8 @@ public class FlyingEye : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        damageable = GetComponent<Damageable>();
-        damageable.Died.AddListener(OnDeath);
+        health = GetComponent<FlyingEyeHealth>();
+        health.Died += OnDeath;
     }
 
     private void Start()
@@ -60,7 +57,7 @@ public class FlyingEye : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (damageable.IsAlive)
+        if (health.IsAlive)
         {
             if (CanMove)
             {
@@ -117,5 +114,10 @@ public class FlyingEye : MonoBehaviour
         rb.gravityScale = 2f;
         rb.velocity = new Vector2(0, rb.velocity.y);
         deathCollider.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        health.Died -= OnDeath;
     }
 }

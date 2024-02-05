@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -75,7 +73,6 @@ public class Damageable : MonoBehaviour
 
     private void Awake()
     {
-        
         _animator = GetComponent<Animator>();
     }
 
@@ -106,8 +103,8 @@ public class Damageable : MonoBehaviour
 
             _animator.SetTrigger("Hit");
             LockVelocity = true;
-            damageableHit?.Invoke(damage, knockback);
-            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+            //damageableHit?.Invoke(damage, knockback);
+            //CharacterEvents.characterDamaged.Invoke(gameObject, damage);
 
             return true;
         }
@@ -121,7 +118,7 @@ public class Damageable : MonoBehaviour
             int maxHeal = Mathf.Max(MaxHealth - Health, 0);
             int actualHeal = Mathf.Min(maxHeal, healthRestore);
             Health += actualHeal;
-            CharacterEvents.characterHealed.Invoke(gameObject, actualHeal);
+            //CharacterEvents.characterHealed.Invoke(gameObject, actualHeal);
             return true;
         }
         return false;

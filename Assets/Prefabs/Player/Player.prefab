@@ -413,10 +413,10 @@ GameObject:
   - component: {fileID: 7553420154001822656}
   - component: {fileID: 960888288923040719}
   - component: {fileID: 1249858785337937242}
-  - component: {fileID: 5900280070653129505}
   - component: {fileID: 5642031478500824463}
-  - component: {fileID: 7790518103420633055}
   - component: {fileID: 8531595921801745378}
+  - component: {fileID: 9074185952235350486}
+  - component: {fileID: 3301743286961658924}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -545,8 +545,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 9074185952235350486}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -565,8 +565,8 @@ MonoBehaviour:
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 9074185952235350486}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -621,8 +621,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 9074185952235350486}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnRun
         m_Mode: 0
         m_Arguments:
@@ -637,8 +637,8 @@ MonoBehaviour:
     m_ActionName: Player/Run[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 9074185952235350486}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -653,8 +653,8 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 9074185952235350486}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnRangedAttack
         m_Mode: 0
         m_Arguments:
@@ -668,10 +668,38 @@ MonoBehaviour:
     m_ActionId: c16d4b1f-b636-4d65-b3c4-9db8eef10849
     m_ActionName: Player/RangedAttack[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnExitGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a1069fc7-9b48-45f5-b61a-361a15621efb
     m_ActionName: UI/Exit[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 1
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ExitAp, Assembly-CSharp
+        m_MethodName: OnExitGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a1caf128-93f4-4da5-921a-0f2c65a7b456
+    m_ActionName: Player/Exit[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -738,22 +766,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.105208695, y: -0.28215063}
   m_Size: {x: 1.3225409, y: 1.8321052}
   m_Direction: 0
---- !u!114 &5900280070653129505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8183623018231117595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff8fde95a4135f4f948a84697919b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 9
-  airMoveSpeed: 4
-  _isFacingRight: 1
 --- !u!114 &5642031478500824463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,60 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36056ee0f6bfc7f459f81b5dc55738f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  groundDistance: 0.05
-  wallDistance: 0.2
-  ceilingDistance: 0.05
   _isGrounded: 1
---- !u!114 &7790518103420633055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8183623018231117595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfd3f4c4006a8d4cb228c9666a3a3eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5900280070653129505}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  Died:
-    m_PersistentCalls:
-      m_Calls: []
-  _maxHealth: 100
-  _health: 100
-  _isAlive: 1
-  isInvincible: 0
-  timeSinceHit: 0
-  InvincibilityTime: 0.7
 --- !u!114 &8531595921801745378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +793,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4854875230137194817, guid: 4c7939fc5cfcebc428e6f55f615852c3, type: 3}
   projectileLauncher: {fileID: 5730023752756027842}
+--- !u!114 &9074185952235350486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183623018231117595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a588b1047fc64934a8cffcc6f661723b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSpeed: 0
+--- !u!114 &3301743286961658924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183623018231117595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0658cc97a245b45b8d5b111d170bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healtTextSpawner: {fileID: 0}
+  currentHealth: 100
 --- !u!1 &8281771065900486445
 GameObject:
   m_ObjectHideFlags: 0

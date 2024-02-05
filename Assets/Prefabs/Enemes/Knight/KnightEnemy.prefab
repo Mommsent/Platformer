@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 2375648853011559200}
   - component: {fileID: 1884210338527799393}
   - component: {fileID: 499042690792835009}
-  - component: {fileID: 4505505688582445801}
+  - component: {fileID: 7933876454886040536}
   m_Layer: 8
   m_Name: KnightEnemy
   m_TagString: Untagged
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335d2d9b988225546ae61446266e9c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAcceleration: 3
+  walkAcceleration: 30
   maxSpeed: 3
   walkStopRate: 0.05
   attackZone: {fileID: 6626047769592901043}
@@ -497,25 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36056ee0f6bfc7f459f81b5dc55738f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  groundDistance: 0.05
-  wallDistance: 0.2
-  ceilingDistance: 0.05
   _isGrounded: 1
---- !u!114 &4505505688582445801
+--- !u!114 &7933876454886040536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,30 +507,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6268546997228794217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfd3f4c4006a8d4cb228c9666a3a3eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d3eb7e8022145d4ab4e6f7223f63245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageableHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1884210338527799393}
-        m_TargetAssemblyTypeName: Knight, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  Died:
-    m_PersistentCalls:
-      m_Calls: []
-  _maxHealth: 50
-  _health: 50
-  _isAlive: 1
-  isInvincible: 0
-  timeSinceHit: 0
-  InvincibilityTime: 0.25
+  healtTextSpawner: {fileID: 0}
+  currentHealth: 100

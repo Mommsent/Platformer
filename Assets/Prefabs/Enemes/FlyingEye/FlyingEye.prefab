@@ -111,9 +111,9 @@ GameObject:
   - component: {fileID: 3153188801046643588}
   - component: {fileID: -3248218723406771803}
   - component: {fileID: -4802339451836606022}
-  - component: {fileID: 3677396512418792039}
   - component: {fileID: 2839809653324852587}
   - component: {fileID: 4428841925876389312}
+  - component: {fileID: 7354298026646823078}
   m_Layer: 8
   m_Name: FlyingEye
   m_TagString: Untagged
@@ -199,7 +199,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3723011396532685661}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -253,42 +253,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.2874756, y: -0.23956394}
   m_Size: {x: 1.2016602, y: 1.4763012}
   m_Direction: 0
---- !u!114 &3677396512418792039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723011396532685661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfd3f4c4006a8d4cb228c9666a3a3eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableHit:
-    m_PersistentCalls:
-      m_Calls: []
-  Died:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4428841925876389312}
-        m_TargetAssemblyTypeName: FlyingEye, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _maxHealth: 25
-  _health: 25
-  _isAlive: 1
-  isInvincible: 0
-  timeSinceHit: 0
-  InvincibilityTime: 0.1
 --- !u!95 &2839809653324852587
 Animator:
   serializedVersion: 5
@@ -328,8 +292,20 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   waypintReachedDistance: 0.1
+--- !u!114 &7354298026646823078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723011396532685661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479180a38106f2842b4f28536391187f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
 --- !u!1 &6410851441061491387
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,8 +387,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3449955, y: -0.112606585}
-  m_Size: {x: 1.2393398, y: 1.3887013}
+  m_Offset: {x: 0.11156416, y: -0.10108173}
+  m_Size: {x: 1.383502, y: 1.5269992}
   m_Direction: 0
 --- !u!1 &6699466085348055981
 GameObject:
@@ -424,7 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618498675730557137}
   - component: {fileID: 5004721886484322542}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DeathCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +454,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26928163}
+  m_Offset: {x: -0.0041586757, y: -0.47113973}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -489,5 +465,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.46143675}
+  m_Size: {x: 1.3576452, y: 0.057720542}
   m_EdgeRadius: 0

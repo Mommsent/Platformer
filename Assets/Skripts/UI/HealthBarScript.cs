@@ -4,35 +4,24 @@ using UnityEngine.UI;
 public class HealthBarScript : MonoBehaviour
 {
     public Slider healthSlider;
-    Damageable damageable;
+    [SerializeField] private Health health;
     private void OnEnable()
     {
-        damageable.healthChanged.AddListener(OnPlayerHealthChanged);
+        health.Changed += OnPlayerHealthChanged;
     }
 
-    private void Awake()
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if(player == null )
-        {
-            Debug.Log("No player found");
-        }
-        damageable = player.GetComponent<Damageable>();
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
-        OnPlayerHealthChanged(damageable.Health, damageable.MaxHealth);
+        OnPlayerHealthChanged(health.CurrentHealth, health.MaxHealth);
+    }
+
+    private void OnPlayerHealthChanged(int maxHealth, int newHealth)
+    {
+        healthSlider.value = CalculateSliderPercentage(newHealth, maxHealth);
     }
 
     private float CalculateSliderPercentage(float currentHealth, float maxHealth)
     {
         return currentHealth / maxHealth;
-    }
-
-    private void OnPlayerHealthChanged(int newHealth, int maxHealth)
-    {
-        healthSlider.value = CalculateSliderPercentage(newHealth, maxHealth);
     }
 }

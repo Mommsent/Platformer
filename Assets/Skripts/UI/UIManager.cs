@@ -7,15 +7,16 @@ public class UIManager : MonoBehaviour
     public TMP_Text damageTextPrefab;
     public TMP_Text healthTextPrefab;
     public Canvas gameCanvas;
+    [SerializeField] Health health;
 
     private void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
-        CharacterEvents.characterDamaged += CharacterTookDamage;
-        CharacterEvents.characterHealed += CharacterHealed;
+        health.gotDamage += CharacterTookDamage;
+        health.Restored += CharacterHealed;
     }
 
-    public void CharacterTookDamage(GameObject character, int damageReceived)
+    public void CharacterTookDamage(Health character, int damageReceived)
     {
         Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
         tmpText.text = damageReceived.ToString();
     }
     
-    public void CharacterHealed(GameObject character, int healthRestored)
+    public void CharacterHealed(Health character, int healthRestored)
     {
         Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 

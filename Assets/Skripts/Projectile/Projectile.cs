@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -8,7 +6,8 @@ public class Projectile : MonoBehaviour
     public Vector2 moveSpeed = new Vector2(20f, 0);
     public Vector2 knockback = new Vector2 (0, 0);
     Rigidbody2D rb;
-    // Start is called before the first frame update
+    IDamageable damageable;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,14 +16,20 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Damageable damageeable = collision.GetComponent<Damageable>();
-        if (damageeable != null)
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+
+        bool checkIfHas = collision.TryGetComponent(out damageable);
+        if (checkIfHas)
         {
             Vector2 deliveredKnockback = transform.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
 
-            bool gotHit = damageeable.Hit(damage, deliveredKnockback);
+            bool gotHit = damageable.IsCanBeReduced();
             if (gotHit) 
             {
+                damageable.Reduce(damage, deliveredKnockback);
                 Destroy(gameObject);
             }
         }
