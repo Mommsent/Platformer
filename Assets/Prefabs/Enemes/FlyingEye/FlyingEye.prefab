@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189093678665126677}
-  - component: {fileID: 6855823536286519204}
   - component: {fileID: 1629207386411980284}
   - component: {fileID: 9135759585613268067}
   m_Layer: 10
@@ -34,22 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 386789888962615736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6855823536286519204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303339547778687791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noCollidersRemain:
-    m_PersistentCalls:
-      m_Calls: []
-  detectedColliders: []
 --- !u!70 &1629207386411980284
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -82,8 +65,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.95861816, y: -0.47139835}
-  m_Size: {x: 0.90130615, y: 0.922739}
+  m_Offset: {x: 0.9364443, y: -0.41965902}
+  m_Size: {x: 1.0491333, y: 1.0491333}
   m_Direction: 0
 --- !u!114 &9135759585613268067
 MonoBehaviour:
@@ -286,13 +269,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce46bd33c9b9f4f458259c2d25711521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biteDetectionZone: {fileID: 8182534549805838203}
+  animator: {fileID: 2839809653324852587}
+  canAttack: 0
   deathCollider: {fileID: 5004721886484322542}
-  flightSpeed: 3
+  biteDetectionZone: {fileID: 8182534549805838203}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  waypintReachedDistance: 0.1
 --- !u!114 &7354298026646823078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479180a38106f2842b4f28536391187f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
+  healtTextSpawner: {fileID: 0}
+  currentHealth: 100
 --- !u!1 &6410851441061491387
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,9 +300,9 @@ GameObject:
   m_Component:
   - component: {fileID: 82991794183002011}
   - component: {fileID: 8182534549805838203}
-  - component: {fileID: 9082256378744833430}
+  - component: {fileID: 7684556483282955722}
   m_Layer: 10
-  m_Name: AttackDetectionZone
+  m_Name: VisionDetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,12 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noCollidersRemain:
-    m_PersistentCalls:
-      m_Calls: []
   detectedColliders: []
---- !u!70 &9082256378744833430
-CapsuleCollider2D:
+  collisionPos: {x: 0, y: 0}
+--- !u!61 &7684556483282955722
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -387,9 +369,19 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11156416, y: -0.10108173}
-  m_Size: {x: 1.383502, y: 1.5269992}
-  m_Direction: 0
+  m_Offset: {x: -0.32859802, y: 0.059568405}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.4422607, y: 2.7350883}
+  m_EdgeRadius: 0
 --- !u!1 &6699466085348055981
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,8 +137,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        movementSM.CurrentState.HandleInput();
-
         movementSM.CurrentState.LogicUpdate();
     }
     

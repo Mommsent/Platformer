@@ -14,11 +14,6 @@ public class GroundedState : State
         base.Enter();
     }
 
-    public override void HandleInput()
-    {
-        base.HandleInput();
-    }
-
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();

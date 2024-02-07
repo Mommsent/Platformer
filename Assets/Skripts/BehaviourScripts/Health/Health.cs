@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class Health : MonoBehaviour, IDamageable, IHealable
+public abstract class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private HealthTextSpawner healtTextSpawner;
+    [SerializeField] public HealthTextSpawner healtTextSpawner;
     private float InvincibilityTime = 0.25f;
     private Animator animator;
     public bool IsInvincible { get; set; } = false;
@@ -97,27 +97,5 @@ public abstract class Health : MonoBehaviour, IDamageable, IHealable
 
         Changed?.Invoke(MaxHealth, CurrentHealth);
         Pushed?.Invoke(knockback);
-    }
-
-
-    public virtual bool IsCanBeRestored(int healthToRestore)
-    {
-        if (IsAlive && MaxHealth > currentHealth) 
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public virtual void Restore(int healthRestore)
-    {
-        int maxHeal = Mathf.Max(MaxHealth - CurrentHealth, 0);
-        int actualhea = Mathf.Min(maxHeal, healthRestore);
-
-        healtTextSpawner.CharacterHealed(this, actualhea);
-
-        CurrentHealth += actualhea;
-
-        Changed?.Invoke(MaxHealth, CurrentHealth);
     }
 }

@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(KnightHealth))]
-public class Knight : MonoBehaviour
+public class Knight : Enemy
 {
     public float walkAcceleration = 3f;
     public float maxSpeed = 3f;
@@ -12,10 +9,11 @@ public class Knight : MonoBehaviour
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
 
-    Rigidbody2D rb;
-    Animator animator;
+    public float waypintReachedDistance = 1f;
 
-    KnightHealth health;
+    Rigidbody2D rb;
+
+    KnightHealth KnightHealth;
 
     public enum WalkableDirection {Right, Left};
     private WalkableDirection _walkDirection;
@@ -46,25 +44,7 @@ public class Knight : MonoBehaviour
     }
 
     private float walkStopeRate = 0.005f;
-    
-    private bool _hasTarget = false;
-    
-    public bool HasTarget 
-    {
-        get { return _hasTarget; }  
-        private set 
-        { 
-            _hasTarget = value;
-            animator.SetBool("HasTarget", value);
-        } 
-    }
-
-    public bool CanMove
-    {
-        get { return animator.GetBool("CanMove"); }
-        private set { animator.SetBool("CanMove", value); }
-    }
-
+  
     public float AttackCooldown 
     { 
         get
@@ -81,47 +61,60 @@ public class Knight : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _touchingDirection = GetComponent<TouchingDirection>();
-        animator = GetComponent<Animator>();
-        health = GetComponent<KnightHealth>();
-        health.Pushed += OnHit;
+        KnightHealth = GetComponent<KnightHealth>();
+        KnightHealth.Pushed += OnHit;
     }
 
     private void Start()
     {
         CanMove = true;
+        CanAttack = false;
+
+        stateMachine = new EnemyStateMachine();
+
+        patrolEState = new EnemyPatrolState(this, stateMachine, attackZone, KnightHealth);
+        chaseEState = new EnemyChaseState(this, stateMachine, attackZone, KnightHealth);
+        attackEState = new EnemyAttackState(this, stateMachine, attackZone, KnightHealth);
+
+        
+        stateMachine.Initialize(patrolEState);
     }
 
     void Update()
     {
-        HasTarget = attackZone.detectedColliders.Count > 0;
+        stateMachine.CurrentState.LogicUpdate();
+
         if(AttackCooldown > 0)
-        {
             AttackCooldown -= Time.deltaTime;
-        }
         if (AttackCooldown < 0)
             AttackCooldown = 0.5f;
     }
 
     private void FixedUpdate()
     {
-        if(_touchingDirection.IsGrounded && _touchingDirection.IsOnWall)
+        stateMachine.CurrentState.PhysicsUpdate();
+
+        if (!_touchingDirection.IsGrounded && _touchingDirection.IsOnWall)
         {
             FlipDirection();
         }
 
-        if(!health.LockVelocity)
+        if(!KnightHealth.LockVelocity)
         {
-            if (CanMove)
-            {
-                float xVelocity = Mathf.Clamp(
-                    rb.velocity.x + (walkAcceleration * walkableDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed);
-                rb.velocity = new Vector2(xVelocity, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopeRate), rb.velocity.y);
-            }
+            
         }
+    }
+
+    public override void Patrol()
+    {
+        float xVelocity = Mathf.Clamp(
+                    rb.velocity.x + (walkAcceleration * walkableDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed);
+        rb.velocity = new Vector2(xVelocity, rb.velocity.y);
+    }
+
+    public override void StopMovement()
+    {
+        rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopeRate), rb.velocity.y);
     }
 
     private void FlipDirection()
@@ -140,9 +133,15 @@ public class Knight : MonoBehaviour
         }
     }
 
+    public override void MoveToAim(Vector2 objectPos, Vector2 aimPos)
+    {
+        Vector2 directionToWaypoint = (aimPos - objectPos).normalized;
+        rb.velocity = directionToWaypoint * maxSpeed;
+    }
+
     public void OnHit(Vector2 knockback)
     {
-        health.LockVelocity = true;
+        KnightHealth.LockVelocity = true;
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 
@@ -154,8 +153,14 @@ public class Knight : MonoBehaviour
         }
     }
 
+    public override float CheckDistanceToAim(Vector2 objectPos, Vector2 AimPos)
+    {
+        float distance = Vector2.Distance(AimPos, objectPos);
+        return distance;
+    }
+
     private void OnDisable()
     {
-        health.Pushed -= OnHit;
+        KnightHealth.Pushed -= OnHit;
     }
 }

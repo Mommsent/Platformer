@@ -1,6 +1,4 @@
 
-
-
 public class WalkingState : GroundedState
 {
     private float walkSpeed = 5f;
@@ -18,7 +16,9 @@ public class WalkingState : GroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        
         player.CurrentMoveSpeed = walkSpeed;
+
         if (player.IsJumping)
         {
             stateMachine.ChangeState(player.jumpState);
@@ -28,6 +28,7 @@ public class WalkingState : GroundedState
         {
             stateMachine.ChangeState(player.fallingState);
         }
+
         if (player.IsRunning)
         {
             player.CurrentMoveSpeed = runningSpeed;
@@ -37,7 +38,5 @@ public class WalkingState : GroundedState
         {
             stateMachine.ChangeState(player.standingState);
         }
-
-        
     }
 }

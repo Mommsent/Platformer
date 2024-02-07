@@ -1,87 +1,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEye : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D), typeof(FlyingEyeHealth))]
+public class FlyingEye : Enemy
 {
-    public DetectionZone biteDetectionZone;
     public Collider2D deathCollider;
 
+    private Rigidbody2D rb;
 
+    public DetectionZone biteDetectionZone;
     public float flightSpeed = 3f;
+
+    private FlyingEyeHealth flyingEyehealth;
+
     public List<Transform> waypoints;
     private int waypointNum = 0;
     private Transform nextWaypoint;
-    public float waypintReachedDistance = 0.1f;
-
-    private Animator animator;
-    private Rigidbody2D rb;
-    private FlyingEyeHealth health;
-
-    private bool _hasTarget = false;
+    public float waypointReachedDistance = 2f;
     
-
-    public bool HasTarget
-    {
-        get { return _hasTarget; }
-        private set
-        {
-            _hasTarget = value;
-            animator.SetBool("HasTarget", value);
-        }
-    }
-
-    public bool CanMove
-    {
-        get { return animator.GetBool("CanMove"); }
-        private set { animator.SetBool("CanMove", value); }
-    }
-
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        health = GetComponent<FlyingEyeHealth>();
-        health.Died += OnDeath;
+        flyingEyehealth = GetComponent<FlyingEyeHealth>();
+
+        flyingEyehealth.Died += OnDeath;
     }
 
     private void Start()
     {
-        nextWaypoint = waypoints[waypointNum];
         CanMove = true;
+        CanAttack = false;
+        nextWaypoint = waypoints[waypointNum];
+
+        stateMachine = new EnemyStateMachine();
+
+        patrolEState = new EnemyPatrolState(this, stateMachine, biteDetectionZone, flyingEyehealth);
+        chaseEState = new EnemyChaseState(this, stateMachine, biteDetectionZone, flyingEyehealth);
+        attackEState = new EnemyAttackState(this, stateMachine, biteDetectionZone, flyingEyehealth);
+        
+        stateMachine.Initialize(patrolEState);
     }
 
     void Update()
     {
-        HasTarget = biteDetectionZone.detectedColliders.Count > 0;
+        stateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
-        if (health.IsAlive)
-        {
-            if (CanMove)
-            {
-                Flight();
-            }
-            else
-            {
-                rb.velocity = Vector3.zero;
-            }
-        }
+        stateMachine.CurrentState.PhysicsUpdate();
     }
 
-    private void Flight()
+    public override void Patrol()
     {
-        Vector2 directionToWaypoint = (nextWaypoint.position - transform.position).normalized;
-        float distance = Vector2.Distance(nextWaypoint.position, transform.position);
-        rb.velocity = directionToWaypoint * flightSpeed;
-
+        MoveToAim(transform.position, nextWaypoint.position);
         UpdateDirection();
 
-        if(distance <= waypintReachedDistance)
+        if (CheckDistanceToAim(transform.position, nextWaypoint.position) <= waypointReachedDistance)
         {
             waypointNum++;
-            if(waypointNum >= waypoints.Count) 
+            if (waypointNum >= waypoints.Count)
             {
                 waypointNum = 0;
             }
@@ -90,34 +68,52 @@ public class FlyingEye : MonoBehaviour
         }
     }
 
+    public override float CheckDistanceToAim(Vector2 objectPos, Vector2 AimPos)
+    {
+        float distance = Vector2.Distance(AimPos, objectPos);
+        return distance;
+    }
+
+
+    public override void StopMovement()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
+    public override void MoveToAim(Vector2 objectPos, Vector2 aimPos)
+    {
+        Vector2 directionToWaypoint = (aimPos - objectPos).normalized;
+        rb.velocity = directionToWaypoint * flightSpeed;
+    }
+
     private void UpdateDirection()
     {
         Vector3 localScale = transform.localScale;
-        if(transform.localScale.x > 0)
+        if (transform.localScale.x > 0)
         {
-            if(rb.velocity.x < 0)
+            if (rb.velocity.x < 0)
             {
                 transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
             }
         }
         else
         {
-            if(rb.velocity.x > 0)
+            if (rb.velocity.x > 0)
             {
-                transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z) ;
+                transform.localScale = new Vector3(localScale.x * -1, localScale.y, localScale.z);
             }
         }
     }
 
-    public void OnDeath()
+    private void OnDeath()
     {
         rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.velocity = new Vector2(0, -rb.velocity.y);
         deathCollider.enabled = true;
     }
 
     private void OnDisable()
     {
-        health.Died -= OnDeath;
+        flyingEyehealth.Died -= OnDeath;
     }
 }
