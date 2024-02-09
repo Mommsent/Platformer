@@ -50,6 +50,10 @@ public class Player : MonoBehaviour
         {
             return animator.GetBool("CanMove");
         }
+        private set
+        {
+            animator.SetBool("CanMove", value);
+        }
     }
 
     public bool IsAlive
@@ -142,7 +146,7 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (!health.LockVelocity)
+        if (CanMove)
         {
             movementSM.CurrentState.PhysicsUpdate();
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
@@ -154,7 +158,7 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        if (IsAlive && !health.LockVelocity && CanMove)
+        if (IsAlive && CanMove)
         {
             IsMoving = moveInput != Vector2.zero;
             SetFacingDerection(moveInput);
@@ -216,7 +220,7 @@ public class Player : MonoBehaviour
 
     public void OnHit(Vector2 knockback)
     {
-        health.LockVelocity = true;
+        CanMove = false;
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 

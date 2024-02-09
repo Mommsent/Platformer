@@ -30,6 +30,7 @@ public class FlyingEye : Enemy
     {
         CanMove = true;
         CanAttack = false;
+        AttackRange = 2;
         nextWaypoint = waypoints[waypointNum];
 
         stateMachine = new EnemyStateMachine();
@@ -54,7 +55,7 @@ public class FlyingEye : Enemy
     public override void Patrol()
     {
         MoveToAim(transform.position, nextWaypoint.position);
-        UpdateDirection();
+        UpdateDirection(transform.position, nextWaypoint.position);
 
         if (CheckDistanceToAim(transform.position, nextWaypoint.position) <= waypointReachedDistance)
         {
@@ -84,9 +85,10 @@ public class FlyingEye : Enemy
     {
         Vector2 directionToWaypoint = (aimPos - objectPos).normalized;
         rb.velocity = directionToWaypoint * flightSpeed;
+        UpdateDirection(objectPos, aimPos);
     }
 
-    private void UpdateDirection()
+    public override void UpdateDirection(Vector2 objectPos, Vector2 aimPos)
     {
         Vector3 localScale = transform.localScale;
         if (transform.localScale.x > 0)
@@ -110,6 +112,7 @@ public class FlyingEye : Enemy
         rb.gravityScale = 2f;
         rb.velocity = new Vector2(0, -rb.velocity.y);
         deathCollider.enabled = true;
+        StopMovement();
     }
 
     private void OnDisable()

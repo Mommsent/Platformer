@@ -852,7 +852,6 @@ AnimatorState:
   - {fileID: -5668854809089579589}
   m_StateMachineBehaviours:
   - {fileID: 1819919149736734391}
-  - {fileID: 7410217096922526358}
   - {fileID: -7892682842368816637}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1081,12 +1080,6 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
-  - m_Name: LockVelocity
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Hit
     m_Type: 9
@@ -1867,23 +1860,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
---- !u!114 &7410217096922526358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e16a3234204b714e8498bbf5c105158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boolName: LockVelocity
-  updateOnState: 1
-  updateOnStateMachine: 0
-  valueOnEnter: 1
-  valueOnExit: 0
 --- !u!1102 &7438191835831177264
 AnimatorState:
   serializedVersion: 6

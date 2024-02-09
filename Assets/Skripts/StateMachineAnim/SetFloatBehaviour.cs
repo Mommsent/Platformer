@@ -34,5 +34,4 @@ public class SetFloatBehaviour : StateMachineBehaviour
         if(updateOnStateMachineExit)
             animator.SetFloat(floatName, valueOnExit);
     }
-
 }

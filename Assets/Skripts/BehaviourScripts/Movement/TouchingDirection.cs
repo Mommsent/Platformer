@@ -3,7 +3,7 @@ using UnityEngine;
 public class TouchingDirection : MonoBehaviour
 {
     private CapsuleCollider2D touchingCol;
-    private ContactFilter2D castFilter;
+    [SerializeField] private ContactFilter2D castFilter;
     private float groundDistance = 0.05f;
     private float wallDistance = 0.2f;
     private float ceilingDistance = 0.05f;

@@ -3,6 +3,9 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     public Animator animator;
+    
+    public float AttackRange {  get; set; }
+
     private bool canAttack = false;
     public bool CanAttack
     {
@@ -11,6 +14,17 @@ public abstract class Enemy : MonoBehaviour
         {
             canAttack = value;
             animator.SetBool("CanAttack", value);
+        }
+    }
+
+    private bool isAttacking = false;
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set
+        {
+            isAttacking = value;
+            animator.SetBool("IsAttacking", value);
         }
     }
 
@@ -27,6 +41,8 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Patrol();
     public abstract void MoveToAim(Vector2 objectPos, Vector2 aimPos);
     public abstract float CheckDistanceToAim(Vector2 objectPos, Vector2 AimPos);
+
+    public abstract void UpdateDirection(Vector2 objectPos, Vector2 aimPos);
     public abstract void StopMovement();
 
     private void Start()

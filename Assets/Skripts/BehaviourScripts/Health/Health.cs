@@ -24,17 +24,6 @@ public abstract class Health : MonoBehaviour, IDamageable
         }
     }
 
-    public bool LockVelocity
-    {
-        get
-        {
-            return animator.GetBool("LockVelocity");
-        }
-        set
-        {
-            animator.SetBool("LockVelocity", value);
-        }
-    }
 
     [SerializeField] private int currentHealth = 100;
     public int CurrentHealth
@@ -90,7 +79,6 @@ public abstract class Health : MonoBehaviour, IDamageable
         CurrentHealth -= damage;
 
         animator.SetTrigger("Hit");
-        LockVelocity = true;
         StartCoroutine(invincibleTime(InvincibilityTime));
 
         healtTextSpawner.CharacterTookDamage(this, damage);

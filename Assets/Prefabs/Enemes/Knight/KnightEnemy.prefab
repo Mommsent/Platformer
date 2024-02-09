@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2619603136984101414}
-  - component: {fileID: 1454350441258324312}
   - component: {fileID: 857052301691130985}
+  - component: {fileID: 1044522482257090320}
   m_Layer: 11
   m_Name: CliffDetectionZone
   m_TagString: Untagged
@@ -33,34 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8337959178948074753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1454350441258324312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368542842775477613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noCollidersRemain:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1884210338527799393}
-        m_TargetAssemblyTypeName: Knight, Assembly-CSharp
-        m_MethodName: OnNoGroundDetected
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  detectedColliders: []
 --- !u!61 &857052301691130985
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,6 +78,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1044522482257090320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368542842775477613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a752232f22e39345bacd5647dd7d8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDetected: 0
 --- !u!1 &3913873127171233740
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,10 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noCollidersRemain:
-    m_PersistentCalls:
-      m_Calls: []
-  detectedColliders: []
+  IsDetected: 0
+  collisionPos: {x: 0, y: 0}
 --- !u!1 &6054393035644371835
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,11 +463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335d2d9b988225546ae61446266e9c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAcceleration: 30
-  maxSpeed: 3
-  walkStopRate: 0.05
+  animator: {fileID: 2375648853011559200}
   attackZone: {fileID: 6626047769592901043}
-  cliffDetectionZone: {fileID: 1454350441258324312}
+  cliffDetectionZone: {fileID: 1044522482257090320}
+  waypintReachedDistance: 1
 --- !u!114 &499042690792835009
 MonoBehaviour:
   m_ObjectHideFlags: 0

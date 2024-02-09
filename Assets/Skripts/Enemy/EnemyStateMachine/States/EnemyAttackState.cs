@@ -17,7 +17,12 @@ public class EnemyAttackState : EnemyState
 
     public override void LogicUpdate()
     {
-        bool isTooFar = enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) > 2;
+        if(!enemy.IsAttacking)
+        {
+            enemy.UpdateDirection(enemy.transform.position, attackDetection.collisionPos);
+        }
+
+        bool isTooFar = enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) > enemy.AttackRange;
         if (isTooFar)
         {
             stateMachine.ChangeState(enemy.chaseEState);

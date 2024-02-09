@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DetectionZone : MonoBehaviour
 {
-    //public UnityEvent noCollidersRemain;
-
     public bool IsDetected;
     public Vector2 collisionPos = Vector2.zero;
 
