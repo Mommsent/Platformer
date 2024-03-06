@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class JumpState : State
 {
-    private float speed = 3f;
-    private float jumpImpulse = 10f;
+    private float speed = 4f;
+    private float jumpImpulse = 23f;
     private bool isJumping;
     Animator animator;
     Rigidbody2D rb;
@@ -51,7 +51,7 @@ public class JumpState : State
     {
         isJumping = true;
         animator.SetTrigger("Jump");
-        rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        rb.velocity = new Vector2(rb.velocity.x * speed, jumpImpulse);
         player.CurrentMoveSpeed = speed;
     }
 }

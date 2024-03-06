@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ParallaxEffect : MonoBehaviour
 {
     public Camera mainCamera;
-    public Transform followTarget;
+    Player player;
+
+    [Inject]
+    private void Construct(Player player)
+    {
+        this.player = player;
+    }
 
     Vector2 startingPosition;
 
     float strtingZ;
 
     Vector2 cameraMoveSinceStart => (Vector2)mainCamera.transform.position - startingPosition;
-    float zDistanceFromTarget => transform.position.z - followTarget.transform.position.z;
+    float zDistanceFromTarget => transform.position.z - player.transform.position.z;
     float clippingPlane => (mainCamera.transform.position.z + (zDistanceFromTarget > 0 ? mainCamera.farClipPlane : mainCamera.nearClipPlane));
     float parallaxFactor => Mathf.Abs(zDistanceFromTarget) / clippingPlane;
 

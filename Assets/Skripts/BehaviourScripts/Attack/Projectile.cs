@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     public int damage = 10;
     public Vector2 moveSpeed = new Vector2(20f, 0);
     public Vector2 knockback = new Vector2 (0, 0);
-    Rigidbody2D rb;
+    [SerializeField] internal Rigidbody2D rb;
+    
     IDamageable damageable;
-
-    void Start()
+    public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
         rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);
     }
 
@@ -18,7 +21,7 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            DestroyProjectile();
         }
 
         bool checkIfHas = collision.TryGetComponent(out damageable);
@@ -30,8 +33,13 @@ public class Projectile : MonoBehaviour
             if (gotHit) 
             {
                 damageable.Reduce(damage, deliveredKnockback);
-                Destroy(gameObject);
+                DestroyProjectile();
             }
         }
+    }
+
+    public virtual void DestroyProjectile()
+    {
+        Destroy(gameObject);
     }
 }

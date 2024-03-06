@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AirState : State
 {
-    private float speed = 3f;
+    private float speed = 4f;
     private Animator animator;
     public AirState(Player player, StateMachine stateMachine, Animator animator) : base(player, stateMachine)
     {

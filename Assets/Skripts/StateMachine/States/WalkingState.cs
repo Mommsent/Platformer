@@ -29,7 +29,7 @@ public class WalkingState : GroundedState
             stateMachine.ChangeState(player.fallingState);
         }
 
-        if (player.IsRunning)
+        if (player.IsRunning && player.CanMove)
         {
             player.CurrentMoveSpeed = runningSpeed;
         }

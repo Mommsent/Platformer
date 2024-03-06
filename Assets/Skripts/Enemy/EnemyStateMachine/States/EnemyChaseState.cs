@@ -14,9 +14,10 @@ public class EnemyChaseState : EnemyState
 
     public override void LogicUpdate()
     {
-        if (attackDetection.IsDetected)
+        if (attackDetection.IsDetected && health.IsAlive && enemy.CanMove)
         {
             enemy.MoveToAim(enemy.transform.position, attackDetection.collisionPos);
+            enemy.UpdateDirection(enemy.transform.position, attackDetection.collisionPos);
             if (enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) < enemy.AttackRange)
             {
                 enemy.StopMovement();

@@ -65,8 +65,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.9364443, y: -0.41965902}
-  m_Size: {x: 1.0491333, y: 1.0491333}
+  m_Offset: {x: 0.9539833, y: -0.4021225}
+  m_Size: {x: 1.6453476, y: 1.6453476}
   m_Direction: 0
 --- !u!114 &9135759585613268067
 MonoBehaviour:
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2839809653324852587}
   - component: {fileID: 4428841925876389312}
   - component: {fileID: 7354298026646823078}
+  - component: {fileID: 1039136280036425899}
   m_Layer: 8
   m_Name: FlyingEye
   m_TagString: Untagged
@@ -270,12 +271,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2839809653324852587}
-  canAttack: 0
-  deathCollider: {fileID: 5004721886484322542}
-  biteDetectionZone: {fileID: 8182534549805838203}
+  rb: {fileID: -3248218723406771803}
+  speed: 4
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  waypointReachedDistance: 0.5
+  attackRange: 2
+  deathCollider: {fileID: 5004721886484322542}
+  biteDetectionZone: {fileID: 8182534549805838203}
 --- !u!114 &7354298026646823078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +293,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healtTextSpawner: {fileID: 0}
-  currentHealth: 100
+  currentHealth: 50
+--- !u!82 &1039136280036425899
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723011396532685661}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4274418064253990378, guid: 8874f7e4709110240b433356f469c912, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6410851441061491387
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectedColliders: []
+  IsDetected: 0
   collisionPos: {x: 0, y: 0}
 --- !u!61 &7684556483282955722
 BoxCollider2D:
@@ -369,7 +469,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.32859802, y: 0.059568405}
+  m_Offset: {x: 1.0248375, y: -0.41057205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -380,7 +480,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.4422607, y: 2.7350883}
+  m_Size: {x: 8.83297, y: 5.1570206}
   m_EdgeRadius: 0
 --- !u!1 &6699466085348055981
 GameObject:
@@ -392,7 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618498675730557137}
   - component: {fileID: 5004721886484322542}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: DeathCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

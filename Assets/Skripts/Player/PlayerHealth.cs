@@ -14,12 +14,10 @@ public class PlayerHealth : Health, IHealable
     public virtual void Restore(int healthRestore)
     {
         int maxHeal = Mathf.Max(MaxHealth - CurrentHealth, 0);
-        int actualhea = Mathf.Min(maxHeal, healthRestore);
+        int actualheal = Mathf.Min(maxHeal, healthRestore);
 
-        healtTextSpawner.CharacterHealed(this, actualhea);
+        healtTextSpawner.CharacterHealed(this, actualheal);
 
-        CurrentHealth += actualhea;
-
-        Changed?.Invoke(MaxHealth, CurrentHealth);
+        CurrentHealth += actualheal;
     }
 }

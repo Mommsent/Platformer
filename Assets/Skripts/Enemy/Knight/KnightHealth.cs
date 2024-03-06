@@ -3,7 +3,7 @@ public class KnightHealth : Health
 {
     private void Start()
     {
-        MaxHealth = 50;
+        MaxHealth = 100;
         CurrentHealth = MaxHealth;
     }
 }

@@ -5,7 +5,10 @@ public class EnemyPatrolState : EnemyState
         : base(enemy, stateMachine, attackDetection, health)
     {
     }
-
+    public override void Enter()
+    {
+        base.Enter();
+    }
     public override void LogicUpdate()
     {
         if(health.IsAlive)

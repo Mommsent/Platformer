@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayOneShotBehaviour : StateMachineBehaviour
 {
     public AudioClip soundToPlay;
-    public float volume = 5;
+    public AudioSource targetAudioSource;
+    public float volume = 20f;
     public bool playOnEnter = true, playOnExit = false, playAfterDelay = false;
 
 
@@ -18,9 +17,9 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
     {
         if(playOnEnter)
         {
-            AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+            PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
         }
-
+        
         timeSinceEntered = 0f;
         hasDelayedSoundPlayed = false;
     }
@@ -34,8 +33,8 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
 
             if(timeSinceEntered > playDelay) 
             {
-                AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
-                hasDelayedSoundPlayed=true;
+                PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+                hasDelayedSoundPlayed =true;
             }
         }
     }
@@ -45,7 +44,7 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
     {
         if (playOnExit)
         {
-            AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+            PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
         }
     }
 
@@ -60,4 +59,17 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+
+    public void PlayClipAtPoint(AudioClip clip, Vector3 position, [UnityEngine.Internal.DefaultValue("1.0F")] float volume)
+    {
+        GameObject gameObject = new GameObject("One shot audio");
+        gameObject.transform.position = position;
+        AudioSource audioSource = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
+        audioSource.clip = clip;
+        audioSource.spatialBlend = 1f;
+        audioSource.volume = volume;
+        audioSource.outputAudioMixerGroup = targetAudioSource.outputAudioMixerGroup;
+        audioSource.Play();
+        Object.Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+    }
 }

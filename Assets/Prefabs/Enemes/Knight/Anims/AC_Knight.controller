@@ -90,7 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: f8d14486fd024644086beec06920186b, type: 3}
-  volume: 1
+  targetAudioSource: {fileID: 8481106191267220182, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
+  volume: 50
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
@@ -108,7 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: dd9ae78b4f79adf43a6bd2c2bf555b49, type: 3}
-  volume: 1
+  targetAudioSource: {fileID: 8481106191267220182, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
+  volume: 50
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
@@ -323,54 +325,36 @@ AnimatorController:
   m_Name: AC_Knight
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsOnWall
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsGrounded
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsOnCeiling
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: CanAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CanMove
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAlive
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Hit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -530,7 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: 712efb641d303514998151de464228fe, type: 3}
-  volume: 1
+  targetAudioSource: {fileID: 8481106191267220182, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
+  volume: 50
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0
@@ -594,7 +579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8300000, guid: 802b39fc89cf1394ba92ea98c5406a64, type: 3}
-  volume: 1
+  targetAudioSource: {fileID: 8481106191267220182, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
+  volume: 50
   playOnEnter: 1
   playOnExit: 0
   playAfterDelay: 0

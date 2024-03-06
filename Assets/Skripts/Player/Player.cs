@@ -1,18 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(PlayerHealth))]
 public class Player : MonoBehaviour
 {
-    
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isMoving = false;
     private bool isRunning = false;
     private Animator animator;
     private TouchingDirection touchingDirections;
-    private PlayerHealth health;
-
+    public PlayerHealth Health { get; set; }
 
     [SerializeField] private float currentSpeed;
     public float CurrentMoveSpeed
@@ -111,13 +110,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public IAmmo Ammo { get; set; }
+    [Inject]
+    public void Construct(IAmmo ammo)
+    {
+        this.Ammo = ammo;
+    }
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirection>();
         animator = GetComponent<Animator>();
-        health = GetComponent<PlayerHealth>();
-        health.Pushed += OnHit;
+        Health = GetComponent<PlayerHealth>();
+        Health.Pushed += OnHit;
     }
 
     private StateMachine movementSM;
@@ -125,7 +131,11 @@ public class Player : MonoBehaviour
     public WalkingState walkingState;
     public JumpState jumpState;
     public AirState fallingState;
-    
+
+    private void OnEnable()
+    {
+        Health.Pushed += OnHit;
+    }
 
     private void Start()
     {
@@ -195,8 +205,7 @@ public class Player : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        //TODO check if alive as well
-        if (context.started && IsGrounded && CanMove)
+        if (context.started && IsGrounded && CanMove && IsAlive)
         {
             IsJumping = true;
         }
@@ -214,7 +223,11 @@ public class Player : MonoBehaviour
     {
         if (context.started)
         {
-            animator.SetTrigger("RangedAttack");
+            if(Ammo.AmmoAmount > 0)
+            {
+                animator.SetTrigger("RangedAttack");
+                Ammo.AmmoAmount--;
+            }
         }
     }
 
@@ -226,7 +239,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        health.Pushed += OnHit;
+        Health.Pushed -= OnHit;
     }
 }
 

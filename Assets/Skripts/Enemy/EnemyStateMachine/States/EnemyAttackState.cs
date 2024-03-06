@@ -17,17 +17,17 @@ public class EnemyAttackState : EnemyState
 
     public override void LogicUpdate()
     {
-        if(!enemy.IsAttacking)
+        if(!enemy.IsAttacking && health.IsAlive)
         {
             enemy.UpdateDirection(enemy.transform.position, attackDetection.collisionPos);
         }
 
         bool isTooFar = enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) > enemy.AttackRange;
-        if (isTooFar)
+        if (isTooFar && !enemy.IsAttacking)
         {
             stateMachine.ChangeState(enemy.chaseEState);
         }
-        if (!attackDetection.IsDetected)
+        if (!attackDetection.IsDetected && !enemy.IsAttacking)
         {
             stateMachine.ChangeState(enemy.patrolEState);
         }

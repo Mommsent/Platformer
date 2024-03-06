@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-interface IDamageable 
+public interface IDamageable 
 {
+    public int MaxHealth { get; set; }
     public int CurrentHealth { get; set; }
 
     void Reduce(int damage, Vector2 knockback);
