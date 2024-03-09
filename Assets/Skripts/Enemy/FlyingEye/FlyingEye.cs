@@ -1,17 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(FlyingEyeHealth))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Health))]
 public class FlyingEye : Enemy
 {
     [SerializeField] private Collider2D deathCollider;
     [SerializeField] private DetectionZone biteDetectionZone;
 
-    private FlyingEyeHealth flyingEyehealth;
+    private Health flyingEyehealth;
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        flyingEyehealth = GetComponent<FlyingEyeHealth>();
+        flyingEyehealth = GetComponent<Health>();
 
         flyingEyehealth.Died += OnDeath;
     }
@@ -49,10 +49,10 @@ public class FlyingEye : Enemy
 
     public override void OnDeath()
     {
-        rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, -rb.velocity.y);
-        deathCollider.enabled = true;
         StopMovement();
+        rb.gravityScale = 2f;
+        rb.velocity = new Vector2(0, -7);
+        deathCollider.enabled = true;
     }
 
     private void OnDisable()

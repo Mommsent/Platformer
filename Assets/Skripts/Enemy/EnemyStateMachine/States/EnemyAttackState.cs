@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class EnemyAttackState : EnemyState
@@ -19,7 +18,8 @@ public class EnemyAttackState : EnemyState
     {
         if(!enemy.IsAttacking && health.IsAlive)
         {
-            enemy.UpdateDirection(enemy.transform.position, attackDetection.collisionPos);
+            enemy.UpdateLookDirection(enemy.transform.position, attackDetection.collisionPos);
+            enemy.UpdateSpriteFacingDirection(enemy.transform.position, attackDetection.collisionPos);
         }
 
         bool isTooFar = enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) > enemy.AttackRange;

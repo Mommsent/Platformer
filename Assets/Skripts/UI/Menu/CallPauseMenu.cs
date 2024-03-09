@@ -1,11 +1,16 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CallPauseMenu : MonoBehaviour
 {
-    [Header("Menu")]
     private bool gameIsPaused;
+    [SerializeField] private Player player;
+    [Header("Menu")]
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject Settings;
+    [SerializeField] private GameObject settings;
+
+    [SerializeField] private GameObject pauseMenuFirst;
+    [SerializeField] private GameObject settingsMenuFirst; 
 
     public void PauseGame()
     {
@@ -13,14 +18,35 @@ public class CallPauseMenu : MonoBehaviour
 
         if (gameIsPaused)
         {
-            pauseMenu.SetActive(true);
+            OpenMainMenu();
             Time.timeScale = 0;
+            player.CanMove = false;
         }
         else
         {
-            pauseMenu.SetActive(false);
-            Settings.SetActive(false);
+            CloseMenus();
             Time.timeScale = 1;
+            player.CanMove = true;
         }
+    }
+
+    public void OpenSettingsMenu()
+    {
+        settings.SetActive(true);
+        pauseMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(settingsMenuFirst);
+    }
+
+    public void OpenMainMenu()
+    {
+        pauseMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
+    }
+
+    public void CloseMenus()
+    {
+        pauseMenu.SetActive(false);
+        settings.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

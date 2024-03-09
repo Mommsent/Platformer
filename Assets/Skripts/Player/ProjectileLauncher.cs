@@ -9,6 +9,6 @@ public class ProjectileLauncher : MonoBehaviour
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileLauncher.transform.position, projectilePrefab.transform.rotation);
         Vector3 origScale = projectile.transform.localScale;
-        projectile.transform.localScale = new Vector3(origScale.x * transform.localScale.x > 0 ? 1 : -1, origScale.y, origScale.z);
+        projectile.transform.localScale = new Vector3(origScale.x * transform.localScale.x > 0 ? origScale.x * 1 : origScale.x  * (-1), origScale.y, origScale.z);
     }
 }

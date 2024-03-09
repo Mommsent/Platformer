@@ -61,12 +61,16 @@ public abstract class Enemy : MonoBehaviour
             nextWaypoint = waypoints[waypointNum];
         }
         MoveToAim(transform.position, nextWaypoint.position);
-        UpdateDirection(transform.position, nextWaypoint.position);
+        UpdateSpriteFacingDirection(transform.position, nextWaypoint.position);
     }
     public virtual void MoveToAim(Vector2 objectPos, Vector2 aimPos)
     {
         directionToWaypoint = (aimPos - objectPos).normalized;
         rb.velocity = new Vector2(directionToWaypoint.x * speed, 0);
+    }
+    public virtual void UpdateLookDirection(Vector2 objectPos, Vector2 aimPos)
+    {
+        directionToWaypoint = (aimPos - objectPos).normalized;
     }
     public virtual float CheckDistanceToAim(Vector2 objectPos, Vector2 AimPos)
     {
@@ -74,7 +78,7 @@ public abstract class Enemy : MonoBehaviour
         return distance;
     }
 
-    public virtual void UpdateDirection(Vector2 objectPos, Vector2 aimPos)
+    public virtual void UpdateSpriteFacingDirection(Vector2 objectPos, Vector2 aimPos)
     {
         
         Vector3 localScale = transform.localScale;

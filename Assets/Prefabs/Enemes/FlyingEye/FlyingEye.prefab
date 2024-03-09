@@ -96,8 +96,8 @@ GameObject:
   - component: {fileID: -4802339451836606022}
   - component: {fileID: 2839809653324852587}
   - component: {fileID: 4428841925876389312}
-  - component: {fileID: 7354298026646823078}
   - component: {fileID: 1039136280036425899}
+  - component: {fileID: 7924074121337838345}
   m_Layer: 8
   m_Name: FlyingEye
   m_TagString: Untagged
@@ -280,20 +280,6 @@ MonoBehaviour:
   attackRange: 2
   deathCollider: {fileID: 5004721886484322542}
   biteDetectionZone: {fileID: 8182534549805838203}
---- !u!114 &7354298026646823078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723011396532685661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479180a38106f2842b4f28536391187f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healtTextSpawner: {fileID: 0}
-  currentHealth: 50
 --- !u!82 &1039136280036425899
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,6 +376,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7924074121337838345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723011396532685661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab376e31cd6989a4f85fc5e0017f82bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 35
 --- !u!1 &6410851441061491387
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +520,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699466085348055981}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -546,7 +545,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0041586757, y: -0.47113973}
+  m_Offset: {x: 0.032956034, y: -0.40302092}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -557,5 +556,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3576452, y: 0.057720542}
+  m_Size: {x: 0.83797747, y: 0.10621202}
   m_EdgeRadius: 0

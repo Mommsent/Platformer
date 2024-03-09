@@ -1,15 +1,15 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(KnightHealth))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Health))]
 public class Knight : Enemy
 {
     [SerializeField] private DetectionZone attackZone;
 
-    KnightHealth KnightHealth;
+    Health KnightHealth;
 
     private void Awake()
     {
-        KnightHealth = GetComponent<KnightHealth>();
+        KnightHealth = GetComponent<Health>();
         KnightHealth.Pushed += OnHit;
         KnightHealth.Died += OnDeath;
     }

@@ -17,7 +17,7 @@ public class EnemyChaseState : EnemyState
         if (attackDetection.IsDetected && health.IsAlive && enemy.CanMove)
         {
             enemy.MoveToAim(enemy.transform.position, attackDetection.collisionPos);
-            enemy.UpdateDirection(enemy.transform.position, attackDetection.collisionPos);
+            enemy.UpdateSpriteFacingDirection(enemy.transform.position, attackDetection.collisionPos);
             if (enemy.CheckDistanceToAim(enemy.transform.position, attackDetection.collisionPos) < enemy.AttackRange)
             {
                 enemy.StopMovement();

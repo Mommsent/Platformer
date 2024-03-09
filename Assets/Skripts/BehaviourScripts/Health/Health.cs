@@ -3,14 +3,20 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-public abstract class Health : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour, IDamageable
 {
     
     private Animator animator;
     
     private float InvincibilityTime = 0.25f;
     public bool IsInvincible { get; set; } = false;
-    public int MaxHealth { get; set; } = 100;
+
+    [SerializeField] private int maxHealth = 100;
+    public int MaxHealth 
+    {
+        get{ return maxHealth; }
+        set { maxHealth = value; }
+    }
 
     private bool isAlive;
     public bool IsAlive

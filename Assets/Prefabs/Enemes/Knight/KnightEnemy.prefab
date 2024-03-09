@@ -198,8 +198,8 @@ GameObject:
   - component: {fileID: 473799229236066488}
   - component: {fileID: 2375648853011559200}
   - component: {fileID: 1884210338527799393}
-  - component: {fileID: 7933876454886040536}
   - component: {fileID: 8481106191267220182}
+  - component: {fileID: 4220524482126386882}
   m_Layer: 8
   m_Name: KnightEnemy
   m_TagString: Untagged
@@ -380,19 +380,6 @@ MonoBehaviour:
   waypointReachedDistance: 0.5
   attackRange: 4
   attackZone: {fileID: 6626047769592901043}
---- !u!114 &7933876454886040536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268546997228794217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3eb7e8022145d4ab4e6f7223f63245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 100
 --- !u!82 &8481106191267220182
 AudioSource:
   m_ObjectHideFlags: 0
@@ -489,3 +476,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4220524482126386882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6268546997228794217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab376e31cd6989a4f85fc5e0017f82bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100

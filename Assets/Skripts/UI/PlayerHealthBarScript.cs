@@ -1,31 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class PlayerHealthBarScript : MonoBehaviour
 {
-    public Slider healthSlider;
-    private Player player;
-
-    [Inject]
-    private void Construct(Player player)
-    {
-        this.player = player;
-    }
-
-    private void OnEnable()
-    {
-        player.Health.Changed += OnPlayerHealthChanged;
-    }
+    [SerializeField] private Image healthBarFilling;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Player player;
+    private float percentage;
 
     void Start()
     {
+        player.Health.Changed += OnPlayerHealthChanged;
         OnPlayerHealthChanged(player.Health.MaxHealth, player.Health.CurrentHealth);
     }
 
     private void OnPlayerHealthChanged(int maxHealth, int newHealth)
     {
-        healthSlider.value = CalculateSliderPercentage(maxHealth, newHealth);
+        percentage = CalculateSliderPercentage(maxHealth, newHealth);
+        healthSlider.value = percentage;
+        healthBarFilling.color = gradient.Evaluate(percentage);
     }
 
     private float CalculateSliderPercentage( float maxHealth, float currentHealth)

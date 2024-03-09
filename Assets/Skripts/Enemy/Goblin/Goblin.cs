@@ -1,17 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(GoblinHealth))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Health))]
 public class Goblin : Enemy
 {
     [SerializeField] private DetectionZone bombDetectionZone;
     [SerializeField] private DetectionZone secondAttackZone;
     private EnemySecondAttackState secondAttackEState;
 
-    GoblinHealth health;
+    Health health;
 
     private void Awake()
     {
-        health = GetComponent<GoblinHealth>();
+        health = GetComponent<Health>();
         health.Pushed += OnHit;
         health.Died += OnDeath;
     }

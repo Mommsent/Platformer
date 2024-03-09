@@ -1,17 +1,10 @@
 using UnityEngine;
-using Zenject;
 
 public class ParallaxEffect : MonoBehaviour
 {
     public Camera mainCamera;
-    Player player;
-
-    [Inject]
-    private void Construct(Player player)
-    {
-        this.player = player;
-    }
-
+    [SerializeField] private Player player;
+ 
     Vector2 startingPosition;
 
     float strtingZ;

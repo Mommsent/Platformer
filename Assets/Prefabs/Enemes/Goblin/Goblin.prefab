@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6541466124389167051}
   - component: {fileID: 4470351927229990229}
   - component: {fileID: 8539390426419356341}
-  - component: {fileID: 1471319953065045510}
   - component: {fileID: 6274819100409327524}
   - component: {fileID: 4102851919004080595}
   - component: {fileID: -3753751639141759258}
+  - component: {fileID: -5562942555133435474}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
@@ -188,20 +188,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1471319953065045510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976321439896120047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff2dcd7cbfaf2b64bb68a27e960f3200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healtTextSpawner: {fileID: 0}
-  currentHealth: 50
 --- !u!114 &6274819100409327524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +320,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5562942555133435474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976321439896120047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab376e31cd6989a4f85fc5e0017f82bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 50
 --- !u!1 &6282987311309244319
 GameObject:
   m_ObjectHideFlags: 0

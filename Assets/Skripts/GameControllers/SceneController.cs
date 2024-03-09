@@ -11,57 +11,56 @@ public class SceneController  : MonoBehaviour
     public int sceneIndex = 0;
 
     SaveLoadPlayerData saveData;
-    Player player;
-
-    [SerializeField] CinemachineVirtualCamera virtualCamera;
-    [SerializeField] Fade fade;
-
+    
+    [SerializeField] private Player player;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Fade fade;
+    [SerializeField] private AudioSource audioSource;
+    
     [Inject]
-    private void Construct(SaveLoadPlayerData saveData, Player player)
+    private void Construct(SaveLoadPlayerData saveData)
     {
         this.saveData = saveData;
-        this.player = player;
-    }
-
-    private void OnEnable()
-    {
-        player.Health.Died += RestartLevel;
     }
 
     private void Start()
     {
-        if(!IsNewGame)
+        player.Health.Died += RestartLevel;
+
+        if (!IsNewGame)
         {
-            saveData.LoadPlayerData();
+            saveData.LoadPlayerData(player);
         }
 
         if(CameraFollowingPlayer)
         {
             virtualCamera.Follow = player.transform;
         }
+
         fade.Out();
     }
 
     public void LoadNextLevevl()
     {
-        saveData.SavePlayerData();
+        saveData.SavePlayerData(player);
+        fade.In(audioSource);
         StartCoroutine(LoadSceneWithDilay(++sceneIndex));
     }
 
     public void RestartLevel()
     {
+        fade.In(audioSource);
         StartCoroutine(LoadSceneWithDilay(sceneIndex));
-    }
-
-    private void OnDisable()
-    {
-        player.Health.Died -= RestartLevel;
     }
 
     private IEnumerator LoadSceneWithDilay(int scebeIndex)
     {
-        fade.In();
         yield return new WaitForSeconds(4);
         SceneManager.LoadScene(scebeIndex);
+    }
+    
+    private void OnDisable()
+    {
+        player.Health.Died -= RestartLevel;
     }
 }

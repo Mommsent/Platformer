@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         {
             return animator.GetBool("CanMove");
         }
-        private set
+        set
         {
             animator.SetBool("CanMove", value);
         }
@@ -119,10 +119,10 @@ public class Player : MonoBehaviour
     
     private void Awake()
     {
+        Health = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirection>();
         animator = GetComponent<Animator>();
-        Health = GetComponent<PlayerHealth>();
         Health.Pushed += OnHit;
     }
 
