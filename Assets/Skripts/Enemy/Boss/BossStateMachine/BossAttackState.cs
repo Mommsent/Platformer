@@ -10,7 +10,6 @@ public class BossAttackState : BossState
 
     public override void Enter()
     {
-        Debug.Log("Im attack");
         boss.CanAttack = true;
         boss.CanMove = false;
     }

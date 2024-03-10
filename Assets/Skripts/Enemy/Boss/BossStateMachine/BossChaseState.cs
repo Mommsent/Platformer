@@ -6,12 +6,6 @@ public class BossChaseState : BossState
         : base(boss, stateMachine, attackDetection, health)
     {
     }
-
-    public override void Enter()
-    {
-        Debug.Log("I see you");
-    }
-
     public override void LogicUpdate()
     {
         if (health.IsAlive && boss.CanMove)

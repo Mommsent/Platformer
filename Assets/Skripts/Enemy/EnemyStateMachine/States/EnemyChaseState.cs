@@ -7,11 +7,6 @@ public class EnemyChaseState : EnemyState
     {
     }
 
-    public override void Enter()
-    {
-        Debug.Log("I see you");
-    }
-
     public override void LogicUpdate()
     {
         if (attackDetection.IsDetected && health.IsAlive && enemy.CanMove)

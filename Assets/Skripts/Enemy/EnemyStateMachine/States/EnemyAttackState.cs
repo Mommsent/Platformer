@@ -9,7 +9,6 @@ public class EnemyAttackState : EnemyState
 
     public override void Enter()
     {
-        Debug.Log("Im attack");
         enemy.CanAttack = true;
         enemy.CanMove = false;
     }
