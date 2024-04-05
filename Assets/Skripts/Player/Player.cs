@@ -226,7 +226,6 @@ public class Player : MonoBehaviour
             if(Ammo.AmmoAmount > 0)
             {
                 animator.SetTrigger("RangedAttack");
-                Ammo.AmmoAmount--;
             }
         }
     }

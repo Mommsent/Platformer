@@ -4,7 +4,6 @@ using UnityEngine;
 public class GameplaySceneMonoInstaller : MonoInstaller
 {
     [SerializeField] private GameObject HealthTextSpawnerPrefab;
-    [SerializeField] private Transform spawnPos;
     public override void InstallBindings()
     {
         Container.Bind<IAmmo>().To<Arrows>().AsSingle();

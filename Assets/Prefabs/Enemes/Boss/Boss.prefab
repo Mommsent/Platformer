@@ -162,16 +162,16 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 704
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 704
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 704
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 704
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   animator: {fileID: 5960218487788075789}
   rb: {fileID: 4233770855455310537}
   attackZone: {fileID: 2481220145281862195}
+  sceneController: {fileID: 0}
   speed: 5
   attackRange: 4
 --- !u!82 &4725648382658030330

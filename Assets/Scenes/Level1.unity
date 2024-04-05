@@ -11223,9 +11223,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 774474489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf5b66cdd638324ebea3f23b0a6206c, type: 3}
+  m_Script: {fileID: 11500000, guid: 44c3ac61fcad2c64e93ca2ddc98f4261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 774474491}
   healthBarFilling: {fileID: 75073167}
   gradient:
     serializedVersion: 2
@@ -11257,8 +11258,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
-  healthSlider: {fileID: 774474491}
-  player: {fileID: 2135617757}
+  health: {fileID: 1935871591}
 --- !u!1 &774646244
 GameObject:
   m_ObjectHideFlags: 0
@@ -42658,7 +42658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthTextSpawnerPrefab: {fileID: 1360267870}
-  spawnPos: {fileID: 1571880625}
 --- !u!114 &1617864086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43208,6 +43207,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+--- !u!114 &1935871591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3301743286961658924, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+  m_PrefabInstance: {fileID: 1935871590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0658cc97a245b45b8d5b111d170bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1979118144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8337959178948074753, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}

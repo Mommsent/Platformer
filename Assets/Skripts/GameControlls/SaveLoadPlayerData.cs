@@ -8,7 +8,7 @@ public class SaveLoadPlayerData
         PlayerPrefs.SetInt("Ammo", player.Ammo.AmmoAmount);
     }
 
-    public void LoadPlayerData(Player player) 
+    public void LoadPlayerData(Player player)
     {
         player.Health.CurrentHealth = PlayerPrefs.GetInt("Health");
         player.Ammo.AmmoAmount = PlayerPrefs.GetInt("Ammo");

@@ -374,7 +374,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3301743286961658924, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: currentHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,6 +442,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a588b1047fc64934a8cffcc6f661723b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &327328314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3301743286961658924, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+  m_PrefabInstance: {fileID: 327328312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0658cc97a245b45b8d5b111d170bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &386875170
@@ -7053,7 +7064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182002980}
   - component: {fileID: 1182002982}
-  - component: {fileID: 1182002981}
+  - component: {fileID: 1182002983}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -7083,51 +7094,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -27.649902}
   m_SizeDelta: {x: 216.8883, y: 56.7628}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1182002981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182002979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf5b66cdd638324ebea3f23b0a6206c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarFilling: {fileID: 1218321853}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 0.9433962, g: 0.04004982, b: 0.055950064, a: 1}
-    key1: {r: 1, g: 0.2494924, b: 0, a: 1}
-    key2: {r: 1, g: 0.78890985, b: 0.033018887, a: 0}
-    key3: {r: 0.91073155, g: 1, b: 0, a: 0}
-    key4: {r: 0.11877227, g: 1, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 15227
-    ctime2: 20817
-    ctime3: 41827
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 2
-  healthSlider: {fileID: 1182002982}
-  player: {fileID: 327328313}
 --- !u!114 &1182002982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7179,6 +7145,51 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1182002983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182002979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c3ac61fcad2c64e93ca2ddc98f4261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1182002982}
+  healthBarFilling: {fileID: 1218321853}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.9433962, g: 0.04004982, b: 0.055950064, a: 1}
+    key1: {r: 1, g: 0.2494924, b: 0, a: 1}
+    key2: {r: 1, g: 0.78890985, b: 0.033018887, a: 0}
+    key3: {r: 0.91073155, g: 1, b: 0, a: 0}
+    key4: {r: 0.11877227, g: 1, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 18697
+    ctime2: 36237
+    ctime3: 48766
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
+  health: {fileID: 327328314}
 --- !u!1 &1188024321
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,7 +8407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthTextSpawnerPrefab: {fileID: 2116058281}
-  spawnPos: {fileID: 0}
 --- !u!4 &1779497757
 Transform:
   m_ObjectHideFlags: 0
@@ -8798,7 +8808,7 @@ Camera:
   m_GameObject: {fileID: 2066431697}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -9158,6 +9168,22 @@ PrefabInstance:
     - target: {fileID: 357013016260046434, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510923966051982143, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
+      propertyPath: m_CallbackLayers.m_Bits
+      value: 704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510923966051982143, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
+      propertyPath: m_ForceSendLayers.m_Bits
+      value: 704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510923966051982143, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
+      propertyPath: m_ForceReceiveLayers.m_Bits
+      value: 704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510923966051982143, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 704
       objectReference: {fileID: 0}
     - target: {fileID: 5122047181953874057, guid: 5c38ee32c42586b4b85eb5a40019448f, type: 3}
       propertyPath: m_LocalPosition.x
