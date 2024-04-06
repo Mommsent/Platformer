@@ -18,9 +18,6 @@ public class FlyingEye : Enemy
 
     private void Start()
     {
-        CanMove = true;
-        CanAttack = false;
-
         nextWaypoint = waypoints[waypointNum];
 
         stateMachine = new EnemyStateMachine();
@@ -51,7 +48,7 @@ public class FlyingEye : Enemy
     {
         StopMovement();
         rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, -7);
+        rb.velocity = new Vector2(0, -1);
         deathCollider.enabled = true;
     }
 

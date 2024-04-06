@@ -825,17 +825,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &301768751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3948630415935305833, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-  m_PrefabInstance: {fileID: 3983392381705214806}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17457099ac0e23a47bf5e4efbebabcb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &366533987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4227628590878877461, guid: a4d36e58598f2e340bc26e3ba23c50ed, type: 3}
@@ -10294,7 +10283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510482702}
   - component: {fileID: 510482701}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43891,10 +43880,6 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1634496821}
-    - target: {fileID: 4428841925876389312, guid: 6ec4c1dd31ae20c4f84c197312b079bd, type: 3}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 93351763}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43948,34 +43933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1064832129933301334, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2680817
-      objectReference: {fileID: 0}
-    - target: {fileID: 1064832129933301334, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Offset.x
-      value: 1.7632446
-      objectReference: {fileID: 0}
-    - target: {fileID: 1539091963686477359, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Size.x
-      value: 26.139694
-      objectReference: {fileID: 0}
-    - target: {fileID: 1539091963686477359, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Offset.x
-      value: 7.9255447
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102851919004080595, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: -838418161826392277, guid: 01619dcf401e2ed4a9cf78de10aaa6d2, type: 3}
     - target: {fileID: 5976321439896120047, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
-    - target: {fileID: 6274819100409327524, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: secondAttackZone
-      value: 
-      objectReference: {fileID: 301768751}
     - target: {fileID: 6274819100409327524, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -43984,18 +43945,6 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 699873479}
-    - target: {fileID: 7059894378879297479, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2302628
-      objectReference: {fileID: 0}
-    - target: {fileID: 7059894378879297479, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.46844864
-      objectReference: {fileID: 0}
-    - target: {fileID: 7833995921457931573, guid: 0b3be33151d7f7443bfd3f030ece75d8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44171,14 +44120,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 154570621}
     m_Modifications:
-    - target: {fileID: 473799229236066488, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
-      propertyPath: m_Size.y
-      value: 2.7339363
-      objectReference: {fileID: 0}
-    - target: {fileID: 473799229236066488, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.16896772
-      objectReference: {fileID: 0}
     - target: {fileID: 1884210338527799393, guid: 2ddfb41d0ca2bd742b5d747947e51dec, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
