@@ -35,8 +35,9 @@ public class Health : MonoBehaviour, IDamageable
     {
         get { return currentHealth; }
         set
-        {   
+        {
             currentHealth = value;
+            
             if (currentHealth <= 0)
             {
                 IsAlive = false;
@@ -84,6 +85,10 @@ public class Health : MonoBehaviour, IDamageable
     public virtual void Reduce(int damage, Vector2 knockback)
     {
         CurrentHealth -= damage;
+        if(currentHealth < 0) 
+        {
+            currentHealth = 0;
+        }
 
         animator.SetTrigger("Hit");
         StartCoroutine(invincibleTime(InvincibilityTime));

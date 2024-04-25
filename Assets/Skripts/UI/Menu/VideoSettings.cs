@@ -13,6 +13,19 @@ public class VideoSettings : MonoBehaviour
     [SerializeField] private Toggle _fullScreenToggle;
     private bool _isFullScreen = true;
 
+    private void OnEnable()
+    {
+        _resolutionDropdown.onValueChanged.AddListener((v) =>
+        {
+            SetResolution(v);
+        });
+
+        _fullScreenToggle.onValueChanged.AddListener((v) =>
+        {
+            SetFullScreen(v);
+        });
+    }
+
     private void Start()
     {
         LoadStateOfFullScreen();
@@ -50,14 +63,12 @@ public class VideoSettings : MonoBehaviour
             if (_filtredResolutions[i].width == Screen.width && _filtredResolutions[i].height == Screen.height)
             {
                 _currentResolutionIndex = i;
-                SetResolution(_currentResolutionIndex);
                 _isFoundRes = true;
             }
         }
         if (_isFoundRes == false)
         {
             _currentResolutionIndex = _filtredResolutions.Count - 1;
-            SetResolution(_currentResolutionIndex);
         }
 
         _resolutionDropdown.AddOptions(finaleResolutionList);
@@ -86,14 +97,7 @@ public class VideoSettings : MonoBehaviour
         Resolution resolution = _filtredResolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, _isFullScreen);
         _resolutionDropdown.value = resolutionIndex;
-    }
-
-    private void OnEnable()
-    {
-        _fullScreenToggle.onValueChanged.AddListener((v) =>
-        {
-            SetFullScreen(v);
-        });
+        _resolutionDropdown.RefreshShownValue();
     }
 
     public void SetFullScreen(bool isFullScreen)
@@ -102,7 +106,6 @@ public class VideoSettings : MonoBehaviour
         _isFullScreen = isFullScreen;
         Debug.Log(_isFullScreen);
     }
-
 
     public void GraphicsApplay()
     {

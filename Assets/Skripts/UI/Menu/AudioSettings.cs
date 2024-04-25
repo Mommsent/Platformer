@@ -39,7 +39,8 @@ public class AudioSettings : MonoBehaviour
 
     public void LoadValues()
     {
-        float localSettingsParametr = PlayerPrefs.GetFloat(_volumeName);
+        float localSettingsParametr = PlayerPrefs.GetFloat(_volumeName, 1);
+        
         SetValue(localSettingsParametr);
     }
 
