@@ -6,15 +6,16 @@ public class AmmoText : MonoBehaviour
 {
     TextMeshProUGUI textMeshPro;
     IAmmo ammo;
-    private void OnEnable()
-    {
-        ammo.wasChanged += SetTextValue;
-    }
 
     [Inject]
     private void Construct(IAmmo ammo)
     {
         this.ammo = ammo;
+    }
+
+    private void OnEnable()
+    {
+        ammo.wasChanged += SetTextValue;
     }
 
     private void Awake()
@@ -29,7 +30,7 @@ public class AmmoText : MonoBehaviour
 
     private void SetTextValue(int ammountOfAmmo)
     {
-        textMeshPro.text = "Arrows: " + ammo.AmmoAmount;
+        textMeshPro.text = "Ammo: " + ammo.AmmoAmount;
     }
 
     private void OnDisable()

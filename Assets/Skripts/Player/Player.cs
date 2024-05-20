@@ -11,9 +11,18 @@ public class Player : MonoBehaviour
     private bool isRunning = false;
     private Animator animator;
     private TouchingDirection touchingDirections;
+
+    private StateMachine movementSM;
+    public StandingState standingState;
+    public WalkingState walkingState;
+    public JumpState jumpState;
+    public AirState fallingState;
+
+    [SerializeField] ProjectileSpawner projectileSpawner;
+
     public PlayerHealth Health { get; set; }
 
-    [SerializeField] private float currentSpeed;
+    private float currentSpeed;
     public float CurrentMoveSpeed
     {
         get
@@ -41,7 +50,6 @@ public class Player : MonoBehaviour
             return touchingDirections.IsOnWall;
         }
     }
-        
 
     public bool CanMove
     {
@@ -91,9 +99,7 @@ public class Player : MonoBehaviour
 
     public bool IsJumping { get;  set; } 
 
-    
     private bool isFacingRight = true;
-
     public bool IsFacingRight
     {
         get
@@ -111,30 +117,24 @@ public class Player : MonoBehaviour
     }
 
     public IAmmo Ammo { get; set; }
+
     [Inject]
     public void Construct(IAmmo ammo)
     {
         this.Ammo = ammo;
     }
-    
+
+    private void OnEnable()
+    {
+        Health.Pushed += OnHit;
+    }
+
     private void Awake()
     {
         Health = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirection>();
         animator = GetComponent<Animator>();
-        Health.Pushed += OnHit;
-    }
-
-    private StateMachine movementSM;
-    public StandingState standingState;
-    public WalkingState walkingState;
-    public JumpState jumpState;
-    public AirState fallingState;
-
-    private void OnEnable()
-    {
-        Health.Pushed += OnHit;
     }
 
     private void Start()
@@ -234,6 +234,12 @@ public class Player : MonoBehaviour
     {
         CanMove = false;
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+
+    private void Shoot()
+    {
+        projectileSpawner.Spawn();
+        Ammo.AmmoAmount--;
     }
 
     private void OnDisable()

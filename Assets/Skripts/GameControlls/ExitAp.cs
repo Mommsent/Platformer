@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ExitAp : MonoBehaviour
 {
@@ -11,10 +11,10 @@ public class ExitAp : MonoBehaviour
 
         #if (UNITY_EDITOR)
             UnityEditor.EditorApplication.isPlaying = false;
-        #elif (UNITY_STANDALONE)
+#elif (UNITY_STANDALONE)
                     Application.Quit();
-        #elif (UNITY_WEBGL)
+#elif (UNITY_WEBGL)
                     SceneManager.LoadScene("QuitScene");
-        #endif
+#endif
     }
 }

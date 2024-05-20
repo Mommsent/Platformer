@@ -4,7 +4,8 @@ using UnityEngine.EventSystems;
 public class CallPauseMenu : MonoBehaviour
 {
     private bool gameIsPaused;
-    [SerializeField] private Player player;
+    [SerializeField] public Player input;
+
     [Header("Menu")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settings;
@@ -20,13 +21,13 @@ public class CallPauseMenu : MonoBehaviour
         {
             OpenMainMenu();
             Time.timeScale = 0;
-            player.CanMove = false;
+            input.CanMove = false;
         }
-        else
+        else if (!gameIsPaused)
         {
             CloseMenus();
             Time.timeScale = 1;
-            player.CanMove = true;
+            input.CanMove = true;
         }
     }
 

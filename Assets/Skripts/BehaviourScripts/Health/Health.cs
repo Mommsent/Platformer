@@ -18,7 +18,7 @@ public class Health : MonoBehaviour, IDamageable
         set { maxHealth = value; }
     }
 
-    private bool isAlive;
+    private bool isAlive = true;
     public bool IsAlive
     {
         get { return isAlive; }
@@ -62,15 +62,6 @@ public class Health : MonoBehaviour, IDamageable
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        IsAlive = true;
-        IsInvincible = false;
-    }
-
-    public IEnumerator invincibleTime(float time)
-    {
-        IsInvincible = true;
-        yield return new WaitForSeconds(time);
-        IsInvincible = false;
     }
 
     public virtual bool IsCanBeReduced()
@@ -96,5 +87,12 @@ public class Health : MonoBehaviour, IDamageable
         healtTextSpawner.CharacterTookDamage(this, damage);
 
         Pushed?.Invoke(knockback);
+    }
+
+    public IEnumerator invincibleTime(float time)
+    {
+        IsInvincible = true;
+        yield return new WaitForSeconds(time);
+        IsInvincible = false;
     }
 }

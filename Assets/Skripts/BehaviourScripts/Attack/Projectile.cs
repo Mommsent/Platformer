@@ -8,10 +8,12 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] internal Rigidbody2D rb;
     
     IDamageable damageable;
+
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     void Start()
     {
         rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);

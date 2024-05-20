@@ -32,4 +32,9 @@ public class HeatlhBar : MonoBehaviour
     {
         return currentHealth / maxHealth;
     }
+
+    private void OnDisable()
+    {
+        health.Changed -= OnPlayerHealthChanged;
+    }
 }

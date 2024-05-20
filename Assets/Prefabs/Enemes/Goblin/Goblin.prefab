@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4470351927229990229}
   - component: {fileID: 8539390426419356341}
   - component: {fileID: 6274819100409327524}
-  - component: {fileID: 4102851919004080595}
   - component: {fileID: -3753751639141759258}
   - component: {fileID: -5562942555133435474}
+  - component: {fileID: 6109474987747192841}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
@@ -208,22 +208,9 @@ MonoBehaviour:
   - {fileID: 0}
   waypointReachedDistance: 1
   attackRange: 20
-  bombDetectionZone: {fileID: 9221693457110423184}
-  secondAttackZone: {fileID: 3948630415935305833}
---- !u!114 &4102851919004080595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976321439896120047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 489d3ae331fe74a429f99be3e0a5d5a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -838418161826392277, guid: 01619dcf401e2ed4a9cf78de10aaa6d2, type: 3}
-  projectileLauncher: {fileID: 7255936773299440067}
+  _bombDetectionZone: {fileID: 9221693457110423184}
+  _secondAttackZone: {fileID: 3948630415935305833}
+  _projectileSpawner: {fileID: 6109474987747192841}
 --- !u!82 &-3753751639141759258
 AudioSource:
   m_ObjectHideFlags: 0
@@ -334,6 +321,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 50
+--- !u!114 &6109474987747192841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976321439896120047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489d3ae331fe74a429f99be3e0a5d5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -838418161826392277, guid: 01619dcf401e2ed4a9cf78de10aaa6d2, type: 3}
+  spawnPos: {fileID: 7637757275944586656}
 --- !u!1 &6282987311309244319
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7637757275944586656}
+  - component: {fileID: 3500260914110569145}
   m_Layer: 10
   m_Name: BombSpawner
   m_TagString: Untagged
@@ -457,6 +459,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 113527051140656335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3500260914110569145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255936773299440067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489d3ae331fe74a429f99be3e0a5d5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -838418161826392277, guid: 01619dcf401e2ed4a9cf78de10aaa6d2, type: 3}
+  spawnPos: {fileID: 7637757275944586656}
 --- !u!1 &7833995921457931573
 GameObject:
   m_ObjectHideFlags: 0

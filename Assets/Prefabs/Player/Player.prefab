@@ -644,10 +644,6 @@ MonoBehaviour:
     m_ActionId: 38d0e798-6e5f-459b-b189-6c30f5357a47
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 287a41dc-11f5-4bb3-92f7-6af63deb391d
-    m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9074185952235350486}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
@@ -878,7 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2918597879705450483, guid: 4c7939fc5cfcebc428e6f55f615852c3, type: 3}
-  projectileLauncher: {fileID: 5730023752756027842}
+  spawnPos: {fileID: 1422984060611584369}
 --- !u!114 &9074185952235350486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a588b1047fc64934a8cffcc6f661723b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 0
+  projectileSpawner: {fileID: 8531595921801745378}
 --- !u!114 &3301743286961658924
 MonoBehaviour:
   m_ObjectHideFlags: 0

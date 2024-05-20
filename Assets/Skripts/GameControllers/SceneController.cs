@@ -6,17 +6,25 @@ using System.Collections;
 
 public class SceneController  : MonoBehaviour
 {
-    public bool IsNewGame;
-    public bool CameraFollowingPlayer;
-    public int sceneIndex = 0;
+    [SerializeField] private bool IsNewGame;
+    [SerializeField] private bool CameraFollowingPlayer;
+    [SerializeField] private int sceneIndex = 0;
+    private float standartDilay = 3f;
 
     SaveLoadPlayerData saveData;
     
-    [SerializeField] private Player player;
+    private PlayerHealth health;
+    [SerializeField] private Transform playerPos;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Fade fade;
     [SerializeField] private AudioSource audioSource;
-    
+
+    [Inject]
+    private void Constract(PlayerHealth player)
+    {
+        this.health = player;
+    }
+
     [Inject]
     private void Construct(SaveLoadPlayerData saveData)
     {
@@ -25,42 +33,41 @@ public class SceneController  : MonoBehaviour
 
     private void Start()
     {
-        player.Health.Died += RestartLevel;
-
         if (!IsNewGame)
         {
-            saveData.LoadPlayerData(player);
+            saveData.LoadPlayerData();
         }
 
         if(CameraFollowingPlayer)
         {
-            virtualCamera.Follow = player.transform;
+            virtualCamera.Follow = playerPos.transform;
         }
 
         fade.Out();
+        health.Died += RestartLevel;
     }
 
-    public void LoadNextLevevl()
+    public void LoadNextLevevl(float dilay)
     {
-        saveData.SavePlayerData(player);
+        saveData.SavePlayerData();
         fade.In(audioSource);
-        StartCoroutine(LoadSceneWithDilay(++sceneIndex));
+        StartCoroutine(LoadSceneWithDilay(++sceneIndex, dilay));
     }
 
     public void RestartLevel()
     {
         fade.In(audioSource);
-        StartCoroutine(LoadSceneWithDilay(sceneIndex));
+        StartCoroutine(LoadSceneWithDilay(sceneIndex, standartDilay));
     }
 
-    private IEnumerator LoadSceneWithDilay(int scebeIndex)
+    private IEnumerator LoadSceneWithDilay(int scebeIndex,float dilay)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(dilay);
         SceneManager.LoadScene(scebeIndex);
     }
     
     private void OnDisable()
     {
-        player.Health.Died -= RestartLevel;
+        health.Died -= RestartLevel;
     }
 }

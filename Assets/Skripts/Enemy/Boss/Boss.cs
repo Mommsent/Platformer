@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private DetectionZone attackZone;
     [SerializeField] private SceneController sceneController;
+    private float dilayForLoading = 15f;
     Health health;
 
     private int hpNeededForStageTwo;
@@ -55,12 +56,16 @@ public class Boss : MonoBehaviour
     public BossChaseState chaseEState;
     public BossAttackState attackEState;
 
+    private void OnEnable()
+    {
+        health.Died += OnDeath;
+    }
+
     private void Awake()
     {
+        health = GetComponent<Health>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        health = GetComponent<Health>();
-        health.Died += OnDeath;
     }
 
     private void Start()
@@ -139,11 +144,11 @@ public class Boss : MonoBehaviour
     public void OnDeath()
     {
         StopMovement();
-        sceneController.LoadNextLevevl();
+        sceneController.LoadNextLevevl(dilayForLoading);
     }
 
     private void OnDisable()
     {
-        health.Died += OnDeath;
+        health.Died -= OnDeath;
     }
 }

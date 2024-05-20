@@ -1,16 +1,32 @@
 using UnityEngine;
+using Zenject;
 
 public class SaveLoadPlayerData
 {
-    public void SavePlayerData(Player player)
+    private PlayerHealth health;
+    private IAmmo ammo;
+
+    [Inject]
+    private void Constract(PlayerHealth health)
     {
-        PlayerPrefs.SetInt("Health", player.Health.CurrentHealth);
-        PlayerPrefs.SetInt("Ammo", player.Ammo.AmmoAmount);
+        this.health = health;
     }
 
-    public void LoadPlayerData(Player player)
+    [Inject]
+    private void Constract(IAmmo ammo)
     {
-        player.Health.CurrentHealth = PlayerPrefs.GetInt("Health");
-        player.Ammo.AmmoAmount = PlayerPrefs.GetInt("Ammo");
+        this.ammo = ammo;
+    }
+
+    public void SavePlayerData()
+    {
+        PlayerPrefs.SetInt("Health", health.CurrentHealth);
+        PlayerPrefs.SetInt("Ammo", ammo.AmmoAmount);
+    }
+
+    public void LoadPlayerData()
+    {
+        health.CurrentHealth = PlayerPrefs.GetInt("Health");
+        ammo.AmmoAmount = PlayerPrefs.GetInt("Ammo");
     }
 }

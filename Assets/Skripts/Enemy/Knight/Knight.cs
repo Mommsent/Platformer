@@ -7,18 +7,19 @@ public class Knight : Enemy
 
     Health KnightHealth;
 
-    private void Awake()
+    private void OnEnable()
     {
-        KnightHealth = GetComponent<Health>();
         KnightHealth.Pushed += OnHit;
         KnightHealth.Died += OnDeath;
     }
 
+    private void Awake()
+    {
+        KnightHealth = GetComponent<Health>();
+    }
+
     private void Start()
     {
-        CanMove = true;
-        CanAttack = false;
-
         nextWaypoint = waypoints[waypointNum];
 
         stateMachine = new EnemyStateMachine();
@@ -50,6 +51,6 @@ public class Knight : Enemy
     private void OnDisable()
     {
         KnightHealth.Pushed -= OnHit;
-        KnightHealth.Died += OnDeath;
+        KnightHealth.Died -= OnDeath;
     }
 }

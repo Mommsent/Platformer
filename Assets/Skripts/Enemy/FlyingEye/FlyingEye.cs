@@ -7,13 +7,16 @@ public class FlyingEye : Enemy
     [SerializeField] private DetectionZone biteDetectionZone;
 
     private Health flyingEyehealth;
-    
+
+    private void OnEnable()
+    {
+        flyingEyehealth.Died += OnDeath;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         flyingEyehealth = GetComponent<Health>();
-
-        flyingEyehealth.Died += OnDeath;
     }
 
     private void Start()
