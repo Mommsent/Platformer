@@ -7,7 +7,7 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+         if(collision.CompareTag("Player"))
         {
             collisionPos = collision.transform.position;
             IsDetected = true;

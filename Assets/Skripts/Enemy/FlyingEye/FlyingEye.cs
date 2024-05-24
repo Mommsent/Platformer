@@ -51,7 +51,7 @@ public class FlyingEye : Enemy
     {
         StopMovement();
         rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, -1);
+        rb.velocity = new Vector2(0, -5);
         deathCollider.enabled = true;
     }
 

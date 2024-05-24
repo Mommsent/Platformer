@@ -43124,13 +43124,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_CallbackLayers.m_Bits
+      value: 7521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_ForceSendLayers.m_Bits
+      value: 7521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_ForceReceiveLayers.m_Bits
+      value: 7521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 7521
+      objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.7
+      value: 10.15
       objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.43
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43165,9 +43181,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553420154001822656, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1362416436}
+    - target: {fileID: 7553420154001822656, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1362416436}
+    - target: {fileID: 7553420154001822656, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8183623018231117595, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_Name
       value: Player
@@ -43327,28 +43351,28 @@ PolygonCollider2D:
       - {x: -80.05445, y: -10.28352}
       - {x: -76.095024, y: -9.548993}
       - {x: -65.76428, y: -9.489512}
-      - {x: -65.76701, y: -8.740317}
+      - {x: -64.71993, y: -9.298759}
       - {x: -26.700157, y: -8.575619}
-      - {x: -13.1115, y: -8.534991}
+      - {x: -15.903713, y: -8.814212}
       - {x: -13.073151, y: -12.667075}
       - {x: 12.4075775, y: -12.47473}
-      - {x: 12.404221, y: -7.079324}
-      - {x: 26.912682, y: -7.089882}
+      - {x: 13.590912, y: -8.4056225}
+      - {x: 26.284431, y: -8.346375}
       - {x: 28.957695, y: -10.356922}
-      - {x: 47.745163, y: -10.360654}
+      - {x: 46.9075, y: -11.966174}
       - {x: 50.347694, y: -13.657195}
-      - {x: 53.18934, y: -13.767924}
-      - {x: 55.84147, y: -15.638189}
-      - {x: 59.874672, y: -15.8467045}
-      - {x: 60.96569, y: -18.60751}
-      - {x: 69.3234, y: -18.517649}
-      - {x: 70.39893, y: -18.481163}
-      - {x: 71.284966, y: -18.4445}
-      - {x: 73.56928, y: -17.364103}
-      - {x: 75.52625, y: -15.886825}
-      - {x: 78.2181, y: -14.325618}
-      - {x: 79.06963, y: -13.605107}
-      - {x: 83.88442, y: -10.205154}
+      - {x: 52.351677, y: -14.11695}
+      - {x: 55.143425, y: -16.126825}
+      - {x: 56.87304, y: -16.823978}
+      - {x: 60.197838, y: -19.305563}
+      - {x: 69.11399, y: -19.35531}
+      - {x: 70.18952, y: -19.039604}
+      - {x: 71.913216, y: -18.793526}
+      - {x: 74.686165, y: -17.433908}
+      - {x: 76.43372, y: -16.235851}
+      - {x: 78.357704, y: -15.093475}
+      - {x: 80.32613, y: -13.605107}
+      - {x: 85.07111, y: -10.833401}
       - {x: 91.036446, y: -8.701077}
       - {x: 116.66442, y: -8.478451}
       - {x: 117.30865, y: -7.673813}
