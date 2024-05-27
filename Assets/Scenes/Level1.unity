@@ -43140,9 +43140,13 @@ PrefabInstance:
       propertyPath: m_ContactCaptureLayers.m_Bits
       value: 7521
       objectReference: {fileID: 0}
+    - target: {fileID: 3301743286961658924, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
+      propertyPath: currentHealth
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.15
+      value: -29.78
       objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.y
