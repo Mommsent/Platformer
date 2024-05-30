@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public JumpState jumpState;
     public AirState fallingState;
 
-    [SerializeField] ProjectileSpawner projectileSpawner;
+    private ProjectileSpawner projectileSpawner;
 
     public PlayerHealth Health { get; set; }
 
@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirection>();
         animator = GetComponent<Animator>();
+        projectileSpawner = GetComponent<ProjectileSpawner>();
     }
 
     private void Start()
@@ -156,9 +157,10 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (CanMove)
+        movementSM.CurrentState.PhysicsUpdate();
+
+        if(CanMove)
         {
-            movementSM.CurrentState.PhysicsUpdate();
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
         }
 

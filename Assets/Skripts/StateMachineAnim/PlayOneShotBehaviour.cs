@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class PlayOneShotBehaviour : StateMachineBehaviour
 {
-    public AudioClip soundToPlay;
-    public AudioSource targetAudioSource;
-    public float volume = 20f;
-    public bool playOnEnter = true, playOnExit = false, playAfterDelay = false;
+    [SerializeField] private AudioClip soundToPlay;
+    [SerializeField] private AudioSource targetAudioSource;
+    [SerializeField] private float volume = 20f;
+    [SerializeField] private bool playOnEnter = true, playOnExit = false, playAfterDelay = false;
 
-
-    public float playDelay = 0.25f;
+    [SerializeField] private float playDelay = 0.25f;
     private float timeSinceEntered = 0;
     private bool hasDelayedSoundPlayed = false;
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(playOnEnter)
@@ -24,7 +22,6 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
         hasDelayedSoundPlayed = false;
     }
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(playAfterDelay && !hasDelayedSoundPlayed)
@@ -39,7 +36,6 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
         }
     }
 
-    
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (playOnExit)
@@ -47,18 +43,6 @@ public class PlayOneShotBehaviour : StateMachineBehaviour
             PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
         }
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 
     public void PlayClipAtPoint(AudioClip clip, Vector3 position, [UnityEngine.Internal.DefaultValue("1.0F")] float volume)
     {

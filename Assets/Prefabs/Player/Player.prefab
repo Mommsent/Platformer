@@ -818,16 +818,16 @@ CapsuleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 7520
+    m_Bits: 7521
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 7520
+    m_Bits: 7521
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 7520
+    m_Bits: 7521
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 7520
+    m_Bits: 7521
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -900,8 +900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0658cc97a245b45b8d5b111d170bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 300
+  currentHealth: 300
 --- !u!82 &-5213228877497489844
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class FadeRemoveBegaviour : StateMachineBehaviour
 {
-    public float fadeTime = 0.5f;
+    [SerializeField] private float fadeTime = 0.5f;
     private float timeElapsed = 0;
-    SpriteRenderer spriteRenderer;
-    GameObject objToRemove;
-    Color startColor;
+    private SpriteRenderer spriteRenderer;
+    private GameObject objToRemove;
+    private Color startColor;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

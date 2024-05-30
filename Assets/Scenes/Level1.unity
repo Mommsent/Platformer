@@ -43124,26 +43124,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_CallbackLayers.m_Bits
-      value: 7521
-      objectReference: {fileID: 0}
-    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_ForceSendLayers.m_Bits
-      value: 7521
-      objectReference: {fileID: 0}
-    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_ForceReceiveLayers.m_Bits
-      value: 7521
-      objectReference: {fileID: 0}
-    - target: {fileID: 1249858785337937242, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 7521
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301743286961658924, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: currentHealth
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 4425940647060178093, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.78
@@ -43188,14 +43168,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1362416436}
-    - target: {fileID: 7553420154001822656, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1362416436}
-    - target: {fileID: 7553420154001822656, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
-      objectReference: {fileID: 0}
     - target: {fileID: 8183623018231117595, guid: 30fad1841808e2b4f8f1697675937895, type: 3}
       propertyPath: m_Name
       value: Player

@@ -1,5 +1,5 @@
 
-public class WalkingState : GroundedState
+public class WalkingState : State
 {
     private float walkSpeed = 5f;
     private float runningSpeed = 9f;

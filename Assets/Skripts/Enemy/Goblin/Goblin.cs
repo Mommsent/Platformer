@@ -5,7 +5,7 @@ public class Goblin : Enemy
 {
     [SerializeField] private DetectionZone _bombDetectionZone;
     [SerializeField] private DetectionZone _secondAttackZone;
-    [SerializeField] private ProjectileSpawner _projectileSpawner;
+    private ProjectileSpawner _projectileSpawner;
     private EnemySecondAttackState _secondAttackEState;
 
     Health health;
@@ -19,6 +19,7 @@ public class Goblin : Enemy
     private void Awake()
     {
         health = GetComponent<Health>();
+        _projectileSpawner = GetComponent<ProjectileSpawner>();
     }
 
     private void Start()

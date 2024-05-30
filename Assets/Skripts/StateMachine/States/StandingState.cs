@@ -1,5 +1,5 @@
 
-public class StandingState : GroundedState
+public class StandingState : State
 {
     private float speed;
     public StandingState(Player player, StateMachine stateMachine) : base(player, stateMachine)
