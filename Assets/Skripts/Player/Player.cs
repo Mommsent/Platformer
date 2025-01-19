@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsSliding { get; set; }
+
     public bool IsGrounded
     {
         get
@@ -232,6 +234,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnSlide(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetTrigger("Slide");
+            IsSliding = true;
+        }
+    }
+
     public void OnHit(Vector2 knockback)
     {
         CanMove = false;
@@ -249,4 +260,3 @@ public class Player : MonoBehaviour
         Health.Pushed -= OnHit;
     }
 }
-

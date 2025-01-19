@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Slide",
+                    "type": "Button",
+                    "id": "ea525e3e-4aba-465f-a8b1-d847e4724c79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Menu",
                     "type": "Button",
-                    "id": "a1caf128-93f4-4da5-921a-0f2c65a7b456",
+                    "id": "7b569dea-1328-49ff-baec-14f46ab86d9c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -272,7 +281,29 @@
                 },
                 {
                     "name": "",
-                    "id": "d0a43428-756d-4b88-8240-1be95f0c2f0f",
+                    "id": "5e8f363f-30a5-4ed6-95bd-a17ebd72ec98",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adb2a769-2379-4e3a-a05a-d5412dd72ca0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf33c12f-58e6-4ebe-aaa1-87f891b4c35c",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
@@ -283,11 +314,11 @@
                 },
                 {
                     "name": "",
-                    "id": "5dd9c639-7c66-4362-a425-c194699324a9",
+                    "id": "0c75acc5-59f2-441b-8aab-562a1c358e25",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Gamepad;Joystick",
                     "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
